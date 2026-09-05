@@ -1,0 +1,18 @@
+{
+  "checkpoint_file": "latest_model.pt",
+  "epoch": 10,
+  "metrics": {
+    "val_loss": 6.110973497231801,
+    "accuracy": 0.9993333333333333,
+    "precision": 0.9986468200270636,
+    "recall": 1.0,
+    "f1": 0.999322951929587,
+    "roc_auc": 1.0,
+    "fpr": 0.0013123359580052493,
+    "fnr": 0.0
+  },
+  "latent_dim": 128,
+  "tau": 0.05,
+  "gamma": 0.5,
+  "saved_at": "2026-09-06 00:21:33"
+}

@@ -1,0 +1,25 @@
+name: multimodal_malware
+channels:
+  - pytorch
+  - pyg
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.10
+  - pip
+  - numpy>=1.24.0
+  - scipy>=1.10.0
+  - pandas>=2.0.0
+  - scikit-learn>=1.3.0
+  - networkx>=3.0
+  - matplotlib>=3.7.0
+  - pyyaml>=6.0
+  - psutil>=5.9.0
+  - pip:
+      - torch>=2.2.0
+      - torch-geometric>=2.5.0
+      - streamlit>=1.35.0
+      - capstone>=5.0.0
+      - lief>=0.14.0
+      - plotly>=5.20.0
+      - pytest>=8.0.0

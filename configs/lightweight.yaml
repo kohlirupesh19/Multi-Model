@@ -1,0 +1,80 @@
+# Lightweight Configuration for Commodity Laptops (CPU-first)
+experiment_name: "lightweight_triage"
+seed: 42
+
+hardware:
+  device: "auto"       # automatically selects 'mps' on Apple Silicon, 'cuda', or 'cpu'
+  precision: "float32"
+  num_workers: 2
+
+dataset:
+  name: "lightweight_benchmark"
+  cache_dir: "features_cache"
+  max_samples: 2000
+  stratified_split:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+
+features:
+  opcode:
+    max_length: 1024
+    sampling_mode: "head_tail"
+    vocab_size: 4096
+  cfg:
+    max_nodes: 500
+    max_edges: 1500
+    node_feat_dim: 16
+    preserve_hubs: true
+  syscall:
+    max_length: 512
+    canonical_vocab_size: 128
+
+model:
+  latent_dim: 128
+  opcode_encoder:
+    type: "compact_transformer"
+    vocab_size: 4096
+    embed_dim: 128
+    hidden_dim: 256
+    num_layers: 2
+    num_heads: 4
+    dropout: 0.1
+  cfg_encoder:
+    type: "gin"
+    in_dim: 16
+    hidden_dim: 128
+    num_layers: 3
+    dropout: 0.1
+  syscall_encoder:
+    type: "bilstm"
+    vocab_size: 128
+    embed_dim: 64
+    hidden_dim: 128
+    num_layers: 1
+    bidirectional: true
+    dropout: 0.1
+  fusion:
+    type: "attention_weighted_late_fusion"
+    projection_dim: 64
+  classifier:
+    num_classes: 2
+    uncertainty_band: [0.40, 0.60]
+
+training:
+  stages: ["encoders", "contrastive", "gram", "fusion", "joint"]
+  epochs: 10
+  batch_size: 32
+  lr_encoder: 1.0e-4
+  lr_projection: 3.0e-4
+  lr_classifier: 5.0e-4
+  weight_decay: 1.0e-4
+  tau: 0.07          # InfoNCE temperature
+  gamma: 0.5         # Volumetric GRAM weight
+  lambda_sep: 0.1    # GRAM negative separation factor
+  patience: 3
+
+evaluation:
+  threshold_metric: "balanced"
+  confidence_interval: 0.95
+  report_leakage: true

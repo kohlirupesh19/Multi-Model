@@ -1,0 +1,85 @@
+# Full Multi-Modal Research Configuration (Transformer + GIN + BiLSTM + InfoNCE + GRAM + Attention Fusion)
+experiment_name: "full_multimodal_alignment"
+seed: 42
+
+hardware:
+  device: "auto"
+  precision: "float32"
+  num_workers: 4
+
+dataset:
+  name: "full_multimodal_benchmark"
+  cache_dir: "features_cache"
+  max_samples: 10000
+  stratified_split:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+
+features:
+  opcode:
+    max_length: 2048
+    sampling_mode: "importance"
+    vocab_size: 8192
+  cfg:
+    max_nodes: 1000
+    max_edges: 3000
+    node_feat_dim: 16
+    preserve_hubs: true
+  syscall:
+    max_length: 1024
+    canonical_vocab_size: 256
+
+model:
+  latent_dim: 128
+  opcode_encoder:
+    type: "compact_transformer"
+    vocab_size: 8192
+    embed_dim: 128
+    hidden_dim: 256
+    num_layers: 4
+    num_heads: 4
+    dropout: 0.15
+  cfg_encoder:
+    type: "gin"
+    in_dim: 16
+    hidden_dim: 128
+    num_layers: 4
+    dropout: 0.15
+  syscall_encoder:
+    type: "bilstm"
+    vocab_size: 256
+    embed_dim: 128
+    hidden_dim: 128
+    num_layers: 2
+    bidirectional: true
+    dropout: 0.15
+  fusion:
+    type: "attention_weighted_late_fusion"
+    projection_dim: 64
+  classifier:
+    num_classes: 2
+    uncertainty_band: [0.40, 0.60]
+
+training:
+  stages: ["encoders", "contrastive", "gram", "fusion", "joint"]
+  stage_epochs:
+    encoders: 3
+    contrastive: 3
+    gram: 2
+    fusion: 2
+    joint: 5
+  batch_size: 32
+  lr_encoder: 1.0e-5
+  lr_projection: 1.0e-4
+  lr_classifier: 5.0e-4
+  weight_decay: 1.0e-4
+  tau: 0.07
+  gamma: 0.5
+  lambda_sep: 0.1
+  patience: 4
+
+evaluation:
+  threshold_metric: "balanced"
+  confidence_interval: 0.95
+  report_leakage: true

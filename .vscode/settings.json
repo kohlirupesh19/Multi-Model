@@ -1,0 +1,12 @@
+{
+  "python.defaultInterpreterPath": "/Users/rupesh/Downloads/Multi-Model/.venv/bin/python",
+  "python.pythonPath": "/Users/rupesh/Downloads/Multi-Model/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "/Users/rupesh/Downloads/Multi-Model",
+    "/Users/rupesh/Downloads/Multi-Model/multimodal_malware",
+    "/Users/rupesh/Downloads/Multi-Model/.venv/lib/python3.14/site-packages",
+    "/Users/rupesh/Library/Python/3.14/lib/python/site-packages"
+  ],
+  "python.analysis.typeCheckingMode": "off",
+  "python.languageServer": "Pylance"
+}

@@ -1,0 +1,91 @@
+# Large-Scale 100,000-Sample Research Configuration
+# Evaluates multi-modal resilience, hyperspherical alignment, and real-time triage at scale
+experiment_name: "scale_100k_research"
+seed: 42
+
+hardware:
+  device: "auto"
+  precision: "float32"
+  num_workers: 2
+
+dataset:
+  name: "multimodal_benchmark_100k"
+  cache_dir: "features_cache"
+  manifest_path: "datasets/benchmark_100k/dataset_manifest.jsonl"
+  shards_dir: "datasets/benchmark_100k/shards"
+  num_samples: 100000
+  balanced: true
+  stratified_split:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+
+features:
+  opcode:
+    max_length: 1024
+    sampling_mode: "head_tail"
+    vocab_size: 4096
+  cfg:
+    max_nodes: 500
+    max_edges: 1500
+    node_feat_dim: 16
+    preserve_hubs: true
+  syscall:
+    max_length: 512
+    canonical_vocab_size: 128
+
+model:
+  latent_dim: 128
+  opcode_encoder:
+    type: "compact_transformer"
+    vocab_size: 4096
+    embed_dim: 128
+    hidden_dim: 256
+    num_layers: 2
+    num_heads: 4
+    dropout: 0.1
+  cfg_encoder:
+    type: "gin"
+    in_dim: 16
+    hidden_dim: 128
+    num_layers: 3
+    dropout: 0.1
+  syscall_encoder:
+    type: "bilstm"
+    vocab_size: 128
+    embed_dim: 64
+    hidden_dim: 128
+    num_layers: 1
+    bidirectional: true
+    dropout: 0.1
+  fusion:
+    type: "attention_weighted_late_fusion"
+    projection_dim: 64
+    dropout: 0.1
+  classifier:
+    num_classes: 2
+    dropout: 0.15
+    uncertainty_band: [0.40, 0.60]
+
+training:
+  stages: ["encoders", "contrastive", "gram", "fusion", "joint"]
+  epochs: 10
+  batch_size: 64
+  lr_encoder: 5.0e-4
+  lr_projection: 1.0e-3
+  lr_classifier: 2.0e-3
+  weight_decay: 1.0e-4
+  tau: 0.05              # Tighter contrastive alignment
+  gamma: 0.5             # Volumetric GRAM weight
+  lambda_sep: 0.1        # GRAM negative separation factor
+  label_smoothing: 0.05  # Prevents overconfident predictions
+  use_focal: false
+  modality_dropout: 0.15 # Simulate evasion during training
+  patience: 5
+  warmup_epochs: 2
+  grad_clip: 2.0
+
+evaluation:
+  threshold_metric: "balanced"
+  confidence_interval: 0.95
+  report_leakage: true

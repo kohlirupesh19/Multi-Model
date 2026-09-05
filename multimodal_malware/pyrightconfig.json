@@ -1,0 +1,22 @@
+{
+  "pythonPath": "/Users/rupesh/Downloads/Multi-Model/.venv/bin/python",
+  "venvPath": "/Users/rupesh/Downloads/Multi-Model",
+  "venv": ".venv",
+  "pythonVersion": "3.14",
+  "pythonPlatform": "Darwin",
+  "include": [
+    "multimodal_malware",
+    "pages",
+    "app.py"
+  ],
+  "extraPaths": [
+    "/Users/rupesh/Downloads/Multi-Model",
+    "/Users/rupesh/Downloads/Multi-Model/multimodal_malware",
+    "/Users/rupesh/Downloads/Multi-Model/.venv/lib/python3.14/site-packages",
+    "/Users/rupesh/Library/Python/3.14/lib/python/site-packages"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingTypeStubs": false,
+  "reportMissingModuleSource": false,
+  "typeCheckingMode": "off"
+}

@@ -1,0 +1,26 @@
+{
+  "dataset_name": "Multi-Modal Malware 100K Benchmark",
+  "total_samples": 100000,
+  "class_distribution": {
+    "benign_count": 50000,
+    "malware_count": 50000,
+    "balance_ratio": 1.0
+  },
+  "family_distribution": {
+    "benign_utility": 10000,
+    "ransomware_wannacry": 10000,
+    "benign_crypto_archiver": 10000,
+    "trojan_emotet": 10000,
+    "benign_network_client": 10000,
+    "worm_mirai": 10000,
+    "benign_system_diagnostic": 10000,
+    "infostealer_redline": 10000,
+    "benign_packed_protector": 10000,
+    "backdoor_cobalt": 10000
+  },
+  "mean_entropy": 6.803,
+  "manifest_path_jsonl": "datasets/benchmark_100k/dataset_manifest.jsonl",
+  "manifest_path_json": "datasets/benchmark_100k/dataset_manifest.json",
+  "materialized_shards": 10,
+  "shard_size": 1000
+}

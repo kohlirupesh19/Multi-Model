@@ -1,0 +1,802 @@
+[
+  {
+    "sha256": "synth_000000_benign_utility_0",
+    "filename": "sample_000000_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 4.656,
+    "timestamp": 1680000000
+  },
+  {
+    "sha256": "synth_000001_ransomware_wannacry_1",
+    "filename": "sample_000001_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.486,
+    "timestamp": 1680086400
+  },
+  {
+    "sha256": "synth_000002_benign_crypto_archiver_0",
+    "filename": "sample_000002_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 6.942,
+    "timestamp": 1680172800
+  },
+  {
+    "sha256": "synth_000003_trojan_emotet_1",
+    "filename": "sample_000003_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.213,
+    "timestamp": 1680259200
+  },
+  {
+    "sha256": "synth_000004_benign_network_client_0",
+    "filename": "sample_000004_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 5.499,
+    "timestamp": 1680345600
+  },
+  {
+    "sha256": "synth_000005_worm_mirai_1",
+    "filename": "sample_000005_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 6.556,
+    "timestamp": 1680432000
+  },
+  {
+    "sha256": "synth_000006_benign_system_diagnostic_0",
+    "filename": "sample_000006_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 5.979,
+    "timestamp": 1680518400
+  },
+  {
+    "sha256": "synth_000007_infostealer_redline_1",
+    "filename": "sample_000007_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 6.693,
+    "timestamp": 1680604800
+  },
+  {
+    "sha256": "synth_000008_benign_packed_protector_0",
+    "filename": "sample_000008_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.756,
+    "timestamp": 1680691200
+  },
+  {
+    "sha256": "synth_000009_backdoor_cobalt_1",
+    "filename": "sample_000009_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.704,
+    "timestamp": 1680777600
+  },
+  {
+    "sha256": "synth_000010_benign_utility_0",
+    "filename": "sample_000010_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 4.576,
+    "timestamp": 1680864000
+  },
+  {
+    "sha256": "synth_000011_ransomware_wannacry_1",
+    "filename": "sample_000011_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.855,
+    "timestamp": 1680950400
+  },
+  {
+    "sha256": "synth_000012_benign_crypto_archiver_0",
+    "filename": "sample_000012_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 7.333,
+    "timestamp": 1681036800
+  },
+  {
+    "sha256": "synth_000013_trojan_emotet_1",
+    "filename": "sample_000013_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.641,
+    "timestamp": 1681123200
+  },
+  {
+    "sha256": "synth_000014_benign_network_client_0",
+    "filename": "sample_000014_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 6.128,
+    "timestamp": 1681209600
+  },
+  {
+    "sha256": "synth_000015_worm_mirai_1",
+    "filename": "sample_000015_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 6.831,
+    "timestamp": 1681296000
+  },
+  {
+    "sha256": "synth_000016_benign_system_diagnostic_0",
+    "filename": "sample_000016_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 5.837,
+    "timestamp": 1681382400
+  },
+  {
+    "sha256": "synth_000017_infostealer_redline_1",
+    "filename": "sample_000017_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 6.472,
+    "timestamp": 1681468800
+  },
+  {
+    "sha256": "synth_000018_benign_packed_protector_0",
+    "filename": "sample_000018_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.384,
+    "timestamp": 1681555200
+  },
+  {
+    "sha256": "synth_000019_backdoor_cobalt_1",
+    "filename": "sample_000019_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.231,
+    "timestamp": 1681641600
+  },
+  {
+    "sha256": "synth_000020_benign_utility_0",
+    "filename": "sample_000020_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 4.742,
+    "timestamp": 1681728000
+  },
+  {
+    "sha256": "synth_000021_ransomware_wannacry_1",
+    "filename": "sample_000021_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.589,
+    "timestamp": 1681814400
+  },
+  {
+    "sha256": "synth_000022_benign_crypto_archiver_0",
+    "filename": "sample_000022_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 6.606,
+    "timestamp": 1681900800
+  },
+  {
+    "sha256": "synth_000023_trojan_emotet_1",
+    "filename": "sample_000023_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.117,
+    "timestamp": 1681987200
+  },
+  {
+    "sha256": "synth_000024_benign_network_client_0",
+    "filename": "sample_000024_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 5.806,
+    "timestamp": 1682073600
+  },
+  {
+    "sha256": "synth_000025_worm_mirai_1",
+    "filename": "sample_000025_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 6.604,
+    "timestamp": 1682160000
+  },
+  {
+    "sha256": "synth_000026_benign_system_diagnostic_0",
+    "filename": "sample_000026_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 6.16,
+    "timestamp": 1682246400
+  },
+  {
+    "sha256": "synth_000027_infostealer_redline_1",
+    "filename": "sample_000027_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 6.432,
+    "timestamp": 1682332800
+  },
+  {
+    "sha256": "synth_000028_benign_packed_protector_0",
+    "filename": "sample_000028_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.277,
+    "timestamp": 1682419200
+  },
+  {
+    "sha256": "synth_000029_backdoor_cobalt_1",
+    "filename": "sample_000029_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.466,
+    "timestamp": 1682505600
+  },
+  {
+    "sha256": "synth_000030_benign_utility_0",
+    "filename": "sample_000030_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 5.595,
+    "timestamp": 1682592000
+  },
+  {
+    "sha256": "synth_000031_ransomware_wannacry_1",
+    "filename": "sample_000031_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.379,
+    "timestamp": 1682678400
+  },
+  {
+    "sha256": "synth_000032_benign_crypto_archiver_0",
+    "filename": "sample_000032_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 7.019,
+    "timestamp": 1682764800
+  },
+  {
+    "sha256": "synth_000033_trojan_emotet_1",
+    "filename": "sample_000033_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.339,
+    "timestamp": 1682851200
+  },
+  {
+    "sha256": "synth_000034_benign_network_client_0",
+    "filename": "sample_000034_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 6.002,
+    "timestamp": 1682937600
+  },
+  {
+    "sha256": "synth_000035_worm_mirai_1",
+    "filename": "sample_000035_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 6.727,
+    "timestamp": 1683024000
+  },
+  {
+    "sha256": "synth_000036_benign_system_diagnostic_0",
+    "filename": "sample_000036_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 5.825,
+    "timestamp": 1683110400
+  },
+  {
+    "sha256": "synth_000037_infostealer_redline_1",
+    "filename": "sample_000037_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 6.772,
+    "timestamp": 1683196800
+  },
+  {
+    "sha256": "synth_000038_benign_packed_protector_0",
+    "filename": "sample_000038_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.456,
+    "timestamp": 1683283200
+  },
+  {
+    "sha256": "synth_000039_backdoor_cobalt_1",
+    "filename": "sample_000039_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.705,
+    "timestamp": 1683369600
+  },
+  {
+    "sha256": "synth_000040_benign_utility_0",
+    "filename": "sample_000040_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 5.577,
+    "timestamp": 1683456000
+  },
+  {
+    "sha256": "synth_000041_ransomware_wannacry_1",
+    "filename": "sample_000041_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.848,
+    "timestamp": 1683542400
+  },
+  {
+    "sha256": "synth_000042_benign_crypto_archiver_0",
+    "filename": "sample_000042_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 6.741,
+    "timestamp": 1683628800
+  },
+  {
+    "sha256": "synth_000043_trojan_emotet_1",
+    "filename": "sample_000043_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.426,
+    "timestamp": 1683715200
+  },
+  {
+    "sha256": "synth_000044_benign_network_client_0",
+    "filename": "sample_000044_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 6.411,
+    "timestamp": 1683801600
+  },
+  {
+    "sha256": "synth_000045_worm_mirai_1",
+    "filename": "sample_000045_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 7.164,
+    "timestamp": 1683888000
+  },
+  {
+    "sha256": "synth_000046_benign_system_diagnostic_0",
+    "filename": "sample_000046_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 6.768,
+    "timestamp": 1683974400
+  },
+  {
+    "sha256": "synth_000047_infostealer_redline_1",
+    "filename": "sample_000047_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 7.053,
+    "timestamp": 1684060800
+  },
+  {
+    "sha256": "synth_000048_benign_packed_protector_0",
+    "filename": "sample_000048_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.664,
+    "timestamp": 1684147200
+  },
+  {
+    "sha256": "synth_000049_backdoor_cobalt_1",
+    "filename": "sample_000049_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.525,
+    "timestamp": 1684233600
+  },
+  {
+    "sha256": "synth_000050_benign_utility_0",
+    "filename": "sample_000050_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 5.223,
+    "timestamp": 1684320000
+  },
+  {
+    "sha256": "synth_000051_ransomware_wannacry_1",
+    "filename": "sample_000051_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.852,
+    "timestamp": 1684406400
+  },
+  {
+    "sha256": "synth_000052_benign_crypto_archiver_0",
+    "filename": "sample_000052_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 6.655,
+    "timestamp": 1684492800
+  },
+  {
+    "sha256": "synth_000053_trojan_emotet_1",
+    "filename": "sample_000053_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.299,
+    "timestamp": 1684579200
+  },
+  {
+    "sha256": "synth_000054_benign_network_client_0",
+    "filename": "sample_000054_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 5.809,
+    "timestamp": 1684665600
+  },
+  {
+    "sha256": "synth_000055_worm_mirai_1",
+    "filename": "sample_000055_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 6.886,
+    "timestamp": 1684752000
+  },
+  {
+    "sha256": "synth_000056_benign_system_diagnostic_0",
+    "filename": "sample_000056_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 6.29,
+    "timestamp": 1684838400
+  },
+  {
+    "sha256": "synth_000057_infostealer_redline_1",
+    "filename": "sample_000057_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 6.724,
+    "timestamp": 1684924800
+  },
+  {
+    "sha256": "synth_000058_benign_packed_protector_0",
+    "filename": "sample_000058_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.499,
+    "timestamp": 1685011200
+  },
+  {
+    "sha256": "synth_000059_backdoor_cobalt_1",
+    "filename": "sample_000059_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.71,
+    "timestamp": 1685097600
+  },
+  {
+    "sha256": "synth_000060_benign_utility_0",
+    "filename": "sample_000060_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 5.447,
+    "timestamp": 1685184000
+  },
+  {
+    "sha256": "synth_000061_ransomware_wannacry_1",
+    "filename": "sample_000061_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.597,
+    "timestamp": 1685270400
+  },
+  {
+    "sha256": "synth_000062_benign_crypto_archiver_0",
+    "filename": "sample_000062_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 7.241,
+    "timestamp": 1685356800
+  },
+  {
+    "sha256": "synth_000063_trojan_emotet_1",
+    "filename": "sample_000063_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.343,
+    "timestamp": 1685443200
+  },
+  {
+    "sha256": "synth_000064_benign_network_client_0",
+    "filename": "sample_000064_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 6.672,
+    "timestamp": 1685529600
+  },
+  {
+    "sha256": "synth_000065_worm_mirai_1",
+    "filename": "sample_000065_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 7.058,
+    "timestamp": 1685616000
+  },
+  {
+    "sha256": "synth_000066_benign_system_diagnostic_0",
+    "filename": "sample_000066_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 6.458,
+    "timestamp": 1685702400
+  },
+  {
+    "sha256": "synth_000067_infostealer_redline_1",
+    "filename": "sample_000067_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 6.595,
+    "timestamp": 1685788800
+  },
+  {
+    "sha256": "synth_000068_benign_packed_protector_0",
+    "filename": "sample_000068_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.717,
+    "timestamp": 1685875200
+  },
+  {
+    "sha256": "synth_000069_backdoor_cobalt_1",
+    "filename": "sample_000069_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.783,
+    "timestamp": 1685961600
+  },
+  {
+    "sha256": "synth_000070_benign_utility_0",
+    "filename": "sample_000070_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 5.666,
+    "timestamp": 1686048000
+  },
+  {
+    "sha256": "synth_000071_ransomware_wannacry_1",
+    "filename": "sample_000071_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.725,
+    "timestamp": 1686134400
+  },
+  {
+    "sha256": "synth_000072_benign_crypto_archiver_0",
+    "filename": "sample_000072_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 6.978,
+    "timestamp": 1686220800
+  },
+  {
+    "sha256": "synth_000073_trojan_emotet_1",
+    "filename": "sample_000073_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.112,
+    "timestamp": 1686307200
+  },
+  {
+    "sha256": "synth_000074_benign_network_client_0",
+    "filename": "sample_000074_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 6.369,
+    "timestamp": 1686393600
+  },
+  {
+    "sha256": "synth_000075_worm_mirai_1",
+    "filename": "sample_000075_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 6.663,
+    "timestamp": 1686480000
+  },
+  {
+    "sha256": "synth_000076_benign_system_diagnostic_0",
+    "filename": "sample_000076_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 6.358,
+    "timestamp": 1686566400
+  },
+  {
+    "sha256": "synth_000077_infostealer_redline_1",
+    "filename": "sample_000077_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 6.553,
+    "timestamp": 1686652800
+  },
+  {
+    "sha256": "synth_000078_benign_packed_protector_0",
+    "filename": "sample_000078_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.361,
+    "timestamp": 1686739200
+  },
+  {
+    "sha256": "synth_000079_backdoor_cobalt_1",
+    "filename": "sample_000079_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.257,
+    "timestamp": 1686825600
+  },
+  {
+    "sha256": "synth_000080_benign_utility_0",
+    "filename": "sample_000080_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 4.798,
+    "timestamp": 1686912000
+  },
+  {
+    "sha256": "synth_000081_ransomware_wannacry_1",
+    "filename": "sample_000081_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.474,
+    "timestamp": 1686998400
+  },
+  {
+    "sha256": "synth_000082_benign_crypto_archiver_0",
+    "filename": "sample_000082_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 6.966,
+    "timestamp": 1687084800
+  },
+  {
+    "sha256": "synth_000083_trojan_emotet_1",
+    "filename": "sample_000083_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.082,
+    "timestamp": 1687171200
+  },
+  {
+    "sha256": "synth_000084_benign_network_client_0",
+    "filename": "sample_000084_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 5.478,
+    "timestamp": 1687257600
+  },
+  {
+    "sha256": "synth_000085_worm_mirai_1",
+    "filename": "sample_000085_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 7.321,
+    "timestamp": 1687344000
+  },
+  {
+    "sha256": "synth_000086_benign_system_diagnostic_0",
+    "filename": "sample_000086_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 5.884,
+    "timestamp": 1687430400
+  },
+  {
+    "sha256": "synth_000087_infostealer_redline_1",
+    "filename": "sample_000087_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 7.138,
+    "timestamp": 1687516800
+  },
+  {
+    "sha256": "synth_000088_benign_packed_protector_0",
+    "filename": "sample_000088_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.477,
+    "timestamp": 1687603200
+  },
+  {
+    "sha256": "synth_000089_backdoor_cobalt_1",
+    "filename": "sample_000089_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.368,
+    "timestamp": 1687689600
+  },
+  {
+    "sha256": "synth_000090_benign_utility_0",
+    "filename": "sample_000090_benign_utility.exe",
+    "label": 0,
+    "family": "benign_utility",
+    "entropy": 4.718,
+    "timestamp": 1687776000
+  },
+  {
+    "sha256": "synth_000091_ransomware_wannacry_1",
+    "filename": "sample_000091_ransomware_wannacry.exe",
+    "label": 1,
+    "family": "ransomware_wannacry",
+    "entropy": 7.53,
+    "timestamp": 1687862400
+  },
+  {
+    "sha256": "synth_000092_benign_crypto_archiver_0",
+    "filename": "sample_000092_benign_crypto_archiver.exe",
+    "label": 0,
+    "family": "benign_crypto_archiver",
+    "entropy": 6.945,
+    "timestamp": 1687948800
+  },
+  {
+    "sha256": "synth_000093_trojan_emotet_1",
+    "filename": "sample_000093_trojan_emotet.exe",
+    "label": 1,
+    "family": "trojan_emotet",
+    "entropy": 7.18,
+    "timestamp": 1688035200
+  },
+  {
+    "sha256": "synth_000094_benign_network_client_0",
+    "filename": "sample_000094_benign_network_client.exe",
+    "label": 0,
+    "family": "benign_network_client",
+    "entropy": 5.958,
+    "timestamp": 1688121600
+  },
+  {
+    "sha256": "synth_000095_worm_mirai_1",
+    "filename": "sample_000095_worm_mirai.exe",
+    "label": 1,
+    "family": "worm_mirai",
+    "entropy": 6.663,
+    "timestamp": 1688208000
+  },
+  {
+    "sha256": "synth_000096_benign_system_diagnostic_0",
+    "filename": "sample_000096_benign_system_diagnostic.exe",
+    "label": 0,
+    "family": "benign_system_diagnostic",
+    "entropy": 6.058,
+    "timestamp": 1688294400
+  },
+  {
+    "sha256": "synth_000097_infostealer_redline_1",
+    "filename": "sample_000097_infostealer_redline.exe",
+    "label": 1,
+    "family": "infostealer_redline",
+    "entropy": 7.216,
+    "timestamp": 1688380800
+  },
+  {
+    "sha256": "synth_000098_benign_packed_protector_0",
+    "filename": "sample_000098_benign_packed_protector.exe",
+    "label": 0,
+    "family": "benign_packed_protector",
+    "entropy": 7.767,
+    "timestamp": 1688467200
+  },
+  {
+    "sha256": "synth_000099_backdoor_cobalt_1",
+    "filename": "sample_000099_backdoor_cobalt.exe",
+    "label": 1,
+    "family": "backdoor_cobalt",
+    "entropy": 7.661,
+    "timestamp": 1688553600
+  }
+]
