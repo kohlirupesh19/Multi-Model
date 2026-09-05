@@ -2,6 +2,7 @@
 
 | Figure | Filename | Topic | LaTeX Label |
 | :--- | :--- | :--- | :--- |
+| **PRISMA Flow** | `fig_prisma_flowchart.svg` / `.html` | PRISMA 2020 Systematic Review Flow | `\ref{fig:prisma_flow}` |
 | **Figure 1** | `fig1_roc_curves.html` | Multi-Modal vs. Unimodal ROC Curves | `\ref{fig:roc_curves}` |
 | **Figure 2** | `fig2_precision_recall.html` | Precision-Recall Curves & Iso-F1 | `\ref{fig:pr_curves}` |
 | **Figure 3** | `fig3_confusion_matrix.html` | Normalized Confusion Matrix (1,500 Test Split) | `\ref{fig:confusion_matrix}` |
