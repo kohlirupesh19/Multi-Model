@@ -1,97 +1,206 @@
-# Multi-Modal Binary Malware Analysis Research Platform
+# Tri-Modal Contrastive Binary Analysis: Systematic Review and Reproducible Benchmark
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Framework: PyTorch](https://img.shields.io/badge/PyTorch-2.2+-ee4c2c.svg)](https://pytorch.org/)
 [![PyG](https://img.shields.io/badge/PyG-2.5+-3C2179.svg)](https://pyg.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B.svg)](https://streamlit.io/)
+[![Tests: 40/40 Passing](https://img.shields.io/badge/tests-40%2F40%20passing-brightgreen.svg)](tests/)
+[![Springer Nature](https://img.shields.io/badge/Springer-sn--jnl-blueviolet.svg)](Research%20Paper/revised_manuscript/)
 
-> **Academic Notice**: *This software is an experimental implementation inspired by the conceptual framework described in the accompanying systematic review:*  
-> *"Multi-Modal Contrastive Binary Analysis via Opcode Transformers, Control Flow Graph Isomorphism Networks, and System Call Embeddings: A Systematic Review and Conceptual Framework"*  
-> The conceptual architecture proposed in the review is synthesized from surveyed literature and was not experimentally validated by the authors of the survey. This platform serves as a reproducible, experimentally validated reference implementation designed to rigorously evaluate those concepts.
+Official open-source repository and reproducibility benchmark for the scientific manuscript:  
+**"Tri-Modal Contrastive Binary Analysis via Opcode Transformers, Control Flow Graph Isomorphism Networks, and System Call Embeddings: A Systematic Review and Reproducible Benchmark"**
 
 ---
 
-## 1. Research Motivation & Core Architecture
+## 🧭 Reviewer Quick Navigation Guide
 
-Modern malware variants routinely evade unimodal detection pipelines:
-- **Static Opcode analysis** is blinded by UPX packing, instruction substitution, and dead-code insertion.
-- **Control Flow Graph (CFG) analysis** degrades under control-flow flattening (OLLVM) and opaque predicate insertion.
-- **Dynamic behavioral sandboxing** incurs high compute overhead (multi-minute delays per binary) and is prone to sandbox-stalling logic.
+For peer reviewers and editors auditing the revised manuscript, all primary artifacts, verification spreadsheets, and audit trails are structured in dedicated directories:
 
-This platform implements the paper's **four-stage multi-modal pipeline**:
+| Deliverable | Location | Description |
+| :--- | :--- | :--- |
+| 📄 **Final Revised Manuscript (PDF)** | [`Research Paper/FINAL_REVISED_MANUSCRIPT.pdf`](Research%20Paper/FINAL_REVISED_MANUSCRIPT.pdf) | Official 27-page compiled Springer Nature PDF with all 14 figures and 10 tables. |
+| 📝 **Point-by-Point Response** | [`Research Paper/POINT_BY_POINT_REVIEWER_RESPONSE.docx`](Research%20Paper/POINT_BY_POINT_REVIEWER_RESPONSE.docx) | Comprehensive point-by-point response letter addressing all reviewer comments. |
+| 📊 **Master Verification Workbook** | [`Research Paper/verification_excel/MASTER_VERIFICATION_AUDIT.xlsx`](Research%20Paper/verification_excel/MASTER_VERIFICATION_AUDIT.xlsx) | Cell-by-cell claim provenance, compliance matrix, and raw metric reconciliation. |
+| 📑 **LaTeX Source Code** | [`Research Paper/revised_manuscript/sn-article.tex`](Research%20Paper/revised_manuscript/sn-article.tex) | Complete TeX source, bibliography (`sn-bibliography.bib`), and template classes. |
+| 🧪 **Single Source of Truth Results** | [`Research Paper/FINAL_RESULTS.csv`](Research%20Paper/FINAL_RESULTS.csv) | Verified canonical benchmark metrics across all 22 experimental configurations. |
+| 📈 **Analytical Figures (PDF/PNG)** | [`analysis/figures/output/`](analysis/figures/output/) | Publication-quality 300-DPI PNG and vector PDF figures generated from raw logs. |
+
+---
+
+## ⚡ 1-Click Verification & Reproduction Commands
+
+All benchmark results can be reproduced directly on a standard CPU/workstation without external cluster dependencies:
+
+### 1. Independent Metric Verification (Phase 6 Audit)
+Loads the model checkpoint and held-out test split, computes forward predictions on all 1,500 test samples, and recalculates Wilson score and bootstrap confidence intervals:
+```bash
+python INDEPENDENT_METRIC_VERIFICATION.py
+```
+*Expected output: Accuracy = 99.7333%, Precision = 100.00%, Recall = 99.4624%, F1 = 0.9973, WannaCry Recall = 100.0%.*
+
+### 2. Execute Automated Integrity Test Suite (40 Tests)
+Runs the complete test suite verifying mathematical consistency, split disjointness, confusion matrix arithmetic, and sensitivity sweeps:
+```bash
+pytest tests/
+```
+*Status: All 40 unit and integration tests pass cleanly in under 5 seconds.*
+
+### 3. Recompile the Springer Manuscript
+Compiles the master LaTeX document into publication-ready PDF:
+```bash
+tectonic "Research Paper/revised_manuscript/sn-article.tex"
+```
+
+### 4. Regenerate Publication Figures
+Regenerates all 11 active manuscript figures into vector PDF and 300-DPI PNG formats:
+```bash
+python -m analysis.figures.generate_all_figures
+```
+
+### 5. Launch Interactive Streamlit Research Dashboard
+Launches the interactive research platform with model inspection, live inference, and similarity search:
+```bash
+streamlit run app.py
+```
+Open `http://localhost:8501` in your browser.
+
+---
+
+## 📊 Verified Empirical Benchmark Summary
+
+The proposed tri-modal framework combines an **Opcode Transformer**, a **Control Flow Graph Isomorphism Network (GIN)**, and a **Dynamic Syscall Bi-LSTM** aligned via multi-channel **InfoNCE** and **Volumetric Gramian (GRAM)** regularization with adaptive attention fusion.
+
+| Metric | Verified Empirical Value | Verification Ground Truth |
+| :--- | :--- | :--- |
+| **Test Accuracy** | **99.73%** (1,496 / 1,500 samples) | Wilson 95% CI: $[99.32\%, 99.90\%]$; Bootstrap CI: $[99.47\%, 99.93\%]$ |
+| **Precision** | **100.00%** (0 False Positives) | Specificity = $100.0\%$ (756 / 756 Benign) |
+| **Recall (Sensitivity)** | **99.46%** (4 False Negatives) | Sensitivity = $99.46\%$ (740 / 744 Malware) |
+| **Macro F1-Score** | **0.9973** | Non-overlapping CIs vs. all baseline models ($\le 0.9120$) |
+| **ROC-AUC / PR-AUC** | **1.000 / 0.9997** | Area under ROC and Precision-Recall curves |
+| **Zero-Day WannaCry Holdout** | **100.0% Detection** (157 / 157 samples) | Mean prediction confidence = $0.9297$; 0 False Negatives |
+| **UPX Obfuscation Robustness** | **88.0% Accuracy** (FPR = 24.0%) | Attention dynamically shifts to syscalls ($\alpha_{\text{sys}} = 0.343$) |
+| **Full Forward Latency** | **28.87 ms** (CPU Architecture) | Opcode: 16.44 ms; GIN: 0.86 ms; Syscall: 11.05 ms; Fusion: 0.09 ms |
+| **Fast Static Triage Latency** | **17.53 ms** (57.0 samples/sec) | **86.2%** of binaries resolved statically; avoids sandbox queue delays |
+| **Total Neural Parameters** | **994,178 parameters** | Fast Static Triage sub-network: 778,370 parameters |
+
+---
+
+## 📁 Repository Directory Architecture
 
 ```text
-                    INPUT BINARY (PE / ELF)
-                               |
-             +-----------------+-----------------+
-             |                 |                 |
-             v                 v                 v
-        OPCODE STREAM      CFG GRAPH       DYNAMIC SYSCALL
-      (Disassembly/LIEF)  (Basic Blocks)   (Isolated VM/Trace)
-             |                 |                 |
-             v                 v                 v
-        Transformer           GIN             BiLSTM
-             |                 |                 |
-             v                 v                 v
-         z_opcode            z_cfg           z_syscall
-             |                 |                 |
-             +-----------------+-----------------+
-                               |
-                               v
-                     L2 NORMALIZATION
-                               |
-                               v
-                     CONTRASTIVE ALIGNMENT
-                     /                   \
-            Pairwise InfoNCE        Volumetric GRAM
-                     \                   /
-                      \                 /
-                       v               v
-                     SHARED LATENT SPACE (d=128)
-                               |
-                               v
-                  ATTENTION-WEIGHTED LATE FUSION
-                  (Dynamic alpha_m + Gating Mask)
-                               |
-                   +-----------+-----------+
-                   |                       |
-                   v                       v
-            CLASSIFICATION          SIMILARITY SEARCH
-         (Malware / Benign /       (FAISS Nearest Neighbors,
-          Family / Abstain)         Top-10 Cosine Matches)
+Multi-Model/
+├── INDEPENDENT_METRIC_VERIFICATION.py  # 1-click authoritative metric verification CLI
+├── app.py                              # Interactive Streamlit dashboard entry point
+├── pages/                              # Streamlit analytical modules and inspection views
+├── README.md                           # Master repository guide and reviewer roadmap
+├── requirements.txt                    # Python runtime package dependencies
+├── environment.yml                     # Conda virtual environment specification
+├── pytest.ini                          # Automated test discovery and warning filters
+│
+├── Research Paper/                     # Scientific manuscript and reviewer audit packages
+│   ├── FINAL_REVISED_MANUSCRIPT.pdf    # Official compiled Springer submission PDF (27 pages)
+│   ├── FINAL_REVISED_MANUSCRIPT.docx   # Formatted Word document for editorial workflows
+│   ├── POINT_BY_POINT_REVIEWER_RESPONSE.docx # Official point-by-point reviewer response
+│   ├── FINAL_RESULTS.csv               # Single source of truth benchmark results (22 experiments)
+│   ├── revised_manuscript/             # Springer Nature LaTeX sources, bibtex, and figures
+│   │   ├── sn-article.tex              # Master LaTeX manuscript source file
+│   │   ├── sn-bibliography.bib         # Verified bibliography (31 peer-reviewed citations)
+│   │   ├── sn-jnl.cls                  # Official Springer Nature document class
+│   │   └── figures/                    # 14 publication figures embedded in manuscript
+│   ├── verification_excel/             # Official audit workbooks for reviewer inspection
+│   │   ├── MASTER_VERIFICATION_AUDIT.xlsx      # Master consolidated audit workbook
+│   │   ├── CLAIM_PROVENANCE_MATRIX.xlsx        # Claim-to-file provenance mapping
+│   │   ├── REVIEWER_COMPLIANCE_MATRIX.xlsx     # Compliance tracking across all comments
+│   │   ├── DATASET_AND_SPLIT_AUDIT.xlsx        # Dataset materialization and partition audit
+│   │   ├── FINAL_RESULTS_BENCHMARK.xlsx        # Authoritative metric verification tables
+│   │   ├── DOI_AND_LITERATURE_AUDIT.xlsx       # PRISMA literature and DOI audits
+│   │   ├── EXPERIMENT_AND_RQ_PROVENANCE.xlsx   # RQ evidence and hypothesis reconciliation
+│   │   └── FINAL_REFERENCE_AUDIT.xlsx          # 100% peer-reviewed citation audit
+│   ├── response_to_reviewers/          # Markdown response letters and generation scripts
+│   ├── audit/                          # Audit scripts, reports, and claim matrices
+│   │   ├── reports/                    # 35 structured audit reports and CSV matrices
+│   │   ├── scripts/                    # Reproducible audit generation scripts
+│   │   └── AUDIT_SPECIFICATION_PROMPT.md # Comprehensive multi-phase audit prompt
+│   └── original_manuscript/            # Pre-revision manuscript archive for comparison
+│
+├── multimodal_malware/                 # Core Python package & neural modules
+│   ├── models/                         # Opcode Transformer, CFG-GIN, Syscall Bi-LSTM, GRAM, Fusion
+│   ├── features/                       # PE/ELF parsing, Capstone disassembly, angr CFG, SQLite cache
+│   ├── training/                       # Dataset loaders, stratified samplers, multi-task trainer
+│   ├── evaluation/                     # Metric calculations, bootstrap CIs, threshold optimization
+│   ├── similarity/                     # Vector similarity index & nearest-neighbor search
+│   ├── sandbox/                        # Instrumented Cuckoo Sandbox trace parsing
+│   ├── configs/                        # Declarative training and evaluation YAML configs
+│   └── scripts/                        # Training, evaluation, and benchmark execution scripts
+│
+├── analysis/                           # Scientific figure generation and Pareto analysis
+│   └── figures/                        # Matplotlib scripts adhering to Springer guidelines
+│       └── output/                     # 11 active manuscript figures (vector PDF & 300-DPI PNG)
+│
+├── checkpoints/                        # Model weights, training logs, and manifests
+│   ├── best_model.pt                   # Optimal trained model checkpoint weights
+│   ├── model_manifest.json             # Model architecture hyperparameters and metadata
+│   └── training_history.json           # Epoch-by-epoch loss convergence and metric history
+│
+├── datasets/                           # Dataset manifests and materialized evaluation shards
+│   ├── benchmark_100k/                 # 100,000 executable binary manifest metadata
+│   ├── benchmark_subset/               # Materialized sample tensors across subfamilies
+│   └── test_split.pt                   # Verified 1,500 held-out test split tensors
+│
+├── results/                            # Raw empirical outputs and evaluation logs
+│   ├── raw_eval_artifacts.npz          # Raw test predictions, labels, and 2D t-SNE embeddings
+│   ├── evaluation_test.json            # Authoritative test metrics and 95% bootstrap CIs
+│   ├── evaluation_family_holdout.json  # 157 WannaCry holdout predictions and recall
+│   ├── evaluation_temporal.json        # Chronological temporal partition evaluation
+│   ├── robustness_results.json         # Adversarial robustness under 5 attack scenarios
+│   ├── latency_benchmark.json          # Wall-clock CPU latency decomposition
+│   ├── roc_curves.csv                  # Exact coordinate points for ROC curves
+│   └── pr_curves.csv                   # Exact coordinate points for Precision-Recall curves
+│
+├── configs/                            # Declarative training and evaluation YAML configs
+│   ├── full_multimodal.yaml            # Standard tri-modal architecture config
+│   ├── high_accuracy.yaml              # Production high-accuracy training config
+│   ├── contrastive.yaml                # Pure InfoNCE self-supervised pretraining
+│   ├── lightweight.yaml                # Low-latency edge deployment configuration
+│   └── scale_100k.yaml                 # 100k distributed sharding configuration
+│
+├── features_cache/                     # Precomputed feature cache & SQLite registry
+│   ├── features_index.sqlite           # SQLite index mapping sample hashes to features
+│   └── tensors/                        # Serialized tensor cache for opcode, CFG, and syscalls
+│
+├── presentation/                       # Project presentation slide deck
+│   └── Multi_Modal_Malware_Analysis_Project_Presentation.pptx # Widescreen presentation deck
+│
+└── tests/                              # Comprehensive automated test suite (40 tests)
+    ├── test_benchmark_integrity.py     # Confusion matrix and metric definition assertions
+    ├── test_figure_integrity.py        # Mathematical reconciliation of figures with raw logs
+    ├── test_dataset_scaling.py         # Sharded dataset collator and splitting checks
+    ├── test_evaluation.py              # Metric calculation and confidence interval tests
+    ├── test_features.py                # Opcode, CFG, and system call extraction unit tests
+    ├── test_models.py                  # PyTorch forward-pass shapes and loss functions
+    └── test_similarity.py              # Vector index retrieval and pairwise comparator tests
 ```
 
 ---
 
-## 2. Key Capabilities & Laptop-First Optimization
+## 🛠️ Environment Setup & Installation
 
-1. **Lightweight Deployment**: CPU-first inference, low memory profile (8–16 GB RAM), graph/sequence sampling safeguards, disk and SQLite caching.
-2. **Two-Stage Triage**:
-   - **Stage 1 (Fast Triage)**: Static PE/ELF parsing, Opcode Transformer, and CFG-GIN execute in milliseconds without spinning up a sandbox.
-   - **Stage 2 (Deep Sandbox Analysis)**: Triggered only for low-confidence or suspicious binaries.
-3. **Robustness to Missing Modalities**: Dynamic gating network applies availability masks ($m_{opcode}, m_{cfg}, m_{syscall}$) so corrupted or unavailable modalities do not derail classification.
-4. **Non-Fabrication Scientific Integrity**: Metrics are only reported if computed from verified experimental runs. Unexecuted experiments display `"Not evaluated yet"`.
-5. **Rigorous Security**: All uploaded samples are isolated in `quarantine/` with SHA-256 random hashes. The host system never directly executes untrusted binaries.
-
----
-
-## 3. Installation
-
-### Option A: Standard Virtual Environment (Recommended)
+### Option 1: Standard Virtual Environment (Recommended)
 ```bash
-# Clone and enter workspace
-cd /path/to/Multi-Model
+# Clone the repository
+git clone https://github.com/kohlirupesh19/Multi-Model.git
+cd Multi-Model
 
-# Create virtual environment
+# Create and activate Python virtual environment
 python3 -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
-# Install dependencies
+# Install required dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Option B: Conda Environment
+### Option 2: Conda Environment
 ```bash
 conda env create -f environment.yml
 conda activate multimodal_malware
@@ -99,86 +208,16 @@ conda activate multimodal_malware
 
 ---
 
-## 4. Quick Start & CLI Workflows
+## 📜 Scientific Citation & Authors
 
-### 1. Launch Streamlit Research Dashboard
-```bash
-streamlit run app.py
+If you use this codebase or benchmark in your research, please cite the accompanying publication:
+
+```bibtex
+@article{Bhabad2026TriModal,
+  author    = {Bhabad, Harish Parshuram and Patel, Atmeshkumar Subhashbhai and Rakhade, Vijay M. and Kohli, Rupesh and Patel, Nandini S.},
+  title     = {Tri-Modal Contrastive Binary Analysis via Opcode Transformers, Control Flow Graph Isomorphism Networks, and System Call Embeddings: A Systematic Review and Reproducible Benchmark},
+  journal   = {Springer Nature Journal of Computer Virology and Hacking Techniques},
+  year      = {2026},
+  url       = {https://github.com/kohlirupesh19/Multi-Model}
+}
 ```
-Open `http://localhost:8501` in your browser.
-
-### 2. Inspect Available Datasets
-```bash
-python scripts/download_datasets.py --list
-```
-
-### 3. Precompute Features
-```bash
-python scripts/precompute_features.py --dataset benchmark_subset --workers 4
-```
-
-### 4. Train the Multi-Modal Model
-```bash
-python scripts/train.py --config configs/lightweight.yaml
-```
-
-### 5. Evaluate on Test Splits
-```bash
-# Standard Random Split
-python scripts/evaluate.py --checkpoint checkpoints/best_model.pt --split test
-
-# Temporal Drift Split
-python scripts/evaluate.py --checkpoint checkpoints/best_model.pt --split temporal
-
-# Zero-Day / Family-Held-Out Split
-python scripts/evaluate.py --checkpoint checkpoints/best_model.pt --split family_holdout
-```
-
-### 6. Run Latency & Hardware Benchmarks
-```bash
-python scripts/benchmark.py --checkpoint checkpoints/best_model.pt
-```
-
-### 7. Run Obfuscation Robustness Suite
-```bash
-python scripts/run_robustness.py --checkpoint checkpoints/best_model.pt
-```
-
----
-
-## 5. Directory Structure
-
-```text
-multimodal_malware/
-├── app.py                         # Streamlit entry point
-├── pages/                         # 10 Dedicated analytical pages
-├── models/                        # Transformer, GIN, BiLSTM, InfoNCE, GRAM, Fusion
-├── features/                      # LIEF PE/ELF parser, Capstone opcode, CFG builder, cache
-├── sandbox/                       # Isolated VM abstraction & trace parsing
-├── training/                      # Dataset, samplers, multi-stage trainer
-├── evaluation/                    # Metrics, threshold sweep, zero-day, temporal, latency
-├── similarity/                    # Vector index & nearest neighbor similarity
-├── scripts/                       # Dataset downloader, feature precomputer, train/eval CLIs
-├── configs/                       # Lightweight, contrastive, and full YAML configs
-├── tests/                         # Full Pytest test suite
-├── checkpoints/                   # Saved model state dicts & manifests
-├── datasets/                      # Verified dataset repositories & metadata
-├── features_cache/                # SQLite & disk feature caches
-├── experiments/                   # Experiment tracking artifacts
-└── quarantine/                    # Isolated upload staging directory
-```
-
----
-
-## 6. Scientific Integrity & Attribution
-
-- **No Fabricated Benchmarks**: All metrics presented in the UI or CLI are generated from actual stored results in `experiments/` or calculated in real-time.
-- **Reference Distinction**: Literature metrics cited from the systematic review are explicitly denoted with `[Literature Reference]` to avoid conflating prior surveyed papers with our local experimental prototype.
-- **GRAM Regularization**: Volumetric GRAM is implemented as defined in Equation 10 of the paper:
-  $$\mathcal{L}_{GRAM} = \frac{1}{N}\sum_{i=1}^N \det(G_i^+) - \lambda_{sep}\log(1 + \det(G_i^-))$$
-  with numerical safeguards ($\det(G) + \epsilon I$).
-
----
-
-## 7. License
-This project is licensed under the [MIT License](LICENSE).

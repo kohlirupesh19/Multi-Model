@@ -1012,6 +1012,18 @@
     },
     "f1_generalization_drop": -0.0034,
     "family_breakdown": {
+      "ransomware_wannacry": {
+        "sample_count": 157,
+        "is_held_out": true,
+        "detection_rate": 1.0,
+        "mean_confidence": 0.9297
+      },
+      "trojan_emotet": {
+        "sample_count": 154,
+        "is_held_out": false,
+        "detection_rate": 0.987,
+        "mean_confidence": 0.9417
+      },
       "worm_mirai": {
         "sample_count": 146,
         "is_held_out": false,
@@ -1029,18 +1041,6 @@
         "is_held_out": false,
         "detection_rate": 1.0,
         "mean_confidence": 0.9521
-      },
-      "trojan_emotet": {
-        "sample_count": 154,
-        "is_held_out": false,
-        "detection_rate": 0.987,
-        "mean_confidence": 0.9417
-      },
-      "ransomware_wannacry": {
-        "sample_count": 157,
-        "is_held_out": true,
-        "detection_rate": 1.0,
-        "mean_confidence": 0.9297
       }
     }
   }
