@@ -35,7 +35,7 @@
 \affil[5]{\orgdiv{Department of Information Technology}, \orgname{Government Engineering College}, \orgaddress{\city{Gandhinagar}, \postcode{382028}, \state{Gujarat}, \country{India}}}
 
 \abstract{
-Single-modality binary analysis remains acutely vulnerable to adversarial evasion, including instruction substitution, control-flow flattening, and sandbox stalling. Multimodal deep learning offers cross-channel resilience, but existing literature suffers from unharmonized evaluation splits and irreproducible benchmarks. This study establishes a dual-contribution framework. First, following PRISMA 2020, we systematically review multimodal binary similarity analysis, auditing 15 primary peer-reviewed journal benchmark studies across five bibliographic and publisher search platforms (IEEE Xplore, ACM Digital Library, ScienceDirect, SpringerLink, Wiley Online Library, with Scopus indexing verification). Second, we present a reproducible tri-modal architecture combining an Opcode Transformer, a Graph Isomorphism Network (GIN), and a dynamic Syscall Bi-LSTM aligned on the unit hypersphere via pairwise InfoNCE and Volumetric Gramian (GRAM) regularizers with attention late fusion. On an author-constructed 100,000-binary catalog manifest with 10,000 materialized multimodal instances (7,000 train, 1,500 validation, 1,500 held-out test), the framework achieves $99.73\%$ test accuracy (Wilson $95\%$ CI: $[99.32\%, 99.90\%]$; Bootstrap $95\%$ CI: $[99.47\%, 99.93\%]$), $100.00\%$ precision, and $99.46\%$ recall on the 1,500 held-out test binaries (740 TP, 756 TN, 4 FN, 0 FP). Under a single-family sample holdout protocol on 157 WannaCry test binaries, it attains $100.00\%$ recall with $0.9297$ mean confidence. Under UPX packing, accuracy drops to $88.00\%$ with a $24.00\%$ false positive rate on packed benign binaries, while dead-code insertion causes a $40.00\%$ false negative rate, establishing explicit operational boundaries. Neural forward latency is $28.87$~ms on CPU (total static ingestion and triage latency: $76.90$~ms); a two-stage triage filter resolves $86.2\%$ of binaries in Stage 1 ($17.53$~ms neural inference), bypassing costly dynamic sandbox detonation for $86.2\%$ of samples.
+Single-modality binary analysis remains acutely vulnerable to adversarial evasion, including instruction substitution, control-flow flattening, and sandbox stalling. Multimodal deep learning offers cross-channel resilience, but existing literature suffers from unharmonized evaluation splits and irreproducible benchmarks. This study establishes a dual-contribution framework. First, following PRISMA 2020, we systematically review multimodal binary similarity analysis, auditing 15 peer-reviewed journal benchmark studies (13 primary empirical investigations and 2 benchmark synthesis reviews) across five bibliographic and publisher search platforms (IEEE Xplore, ACM Digital Library, ScienceDirect, SpringerLink, Wiley Online Library, with Scopus indexing verification). Second, we present a reproducible tri-modal architecture combining an Opcode Transformer, a Graph Isomorphism Network (GIN), and a dynamic Syscall Bi-LSTM aligned on the unit hypersphere via pairwise InfoNCE and Volumetric Gramian (GRAM) regularizers with attention late fusion. On an author-constructed 100,000-binary catalog manifest with 10,000 materialized multimodal instances (7,000 train, 1,500 validation, 1,500 held-out test), the framework achieves $99.73\%$ test accuracy (Wilson $95\%$ CI: $[99.32\%, 99.90\%]$; Bootstrap $95\%$ CI: $[99.47\%, 99.93\%]$), $100.00\%$ precision, and $99.46\%$ recall on the 1,500 held-out test binaries (740 TP, 756 TN, 4 FN, 0 FP). Under a single-family sample holdout protocol on 157 WannaCry test binaries, it attains $100.00\%$ recall with $0.9297$ mean confidence. Under UPX packing, accuracy drops to $88.00\%$ with a $24.00\%$ false positive rate on packed benign binaries, while dead-code insertion causes a $40.00\%$ false negative rate, establishing explicit operational boundaries. Neural forward latency is $28.87$~ms on CPU (total static ingestion and triage latency: $76.90$~ms); a two-stage triage filter resolves $86.2\%$ of binaries in Stage 1 ($17.53$~ms neural inference), bypassing costly dynamic sandbox detonation for $86.2\%$ of samples.
 }
 
 \keywords{Binary Similarity Analysis, Multi-Modal Learning, Control Flow Graphs, Graph Isomorphism Networks, Malware Detection, Operational Triage}
@@ -63,7 +63,7 @@ Although multimodal binary analysis has emerged to combine orthogonal views \cit
 \subsection{Contributions}\label{sec:intro_contributions}
 This paper establishes four concrete, repository-grounded contributions:
 \begin{enumerate}
-    \item \textbf{Systematic Evidence Synthesis:} A PRISMA 2020 systematic review synthesizing multimodal binary similarity analysis literature across five bibliographic/publisher databases and indexing platforms ($n = 842$ initial records, 15 included primary peer-reviewed journal benchmark studies, inter-rater reliability $\kappa = 0.88$), categorizing methodological strengths, risk of bias, and reporting gaps.
+    \item \textbf{Systematic Evidence Synthesis:} A PRISMA 2020 systematic review synthesizing multimodal binary similarity analysis literature across five bibliographic/publisher databases and indexing platforms ($n = 842$ initial records, 15 included peer-reviewed journal benchmark studies comprising 13 primary empirical investigations and 2 benchmark synthesis reviews, inter-rater reliability $\kappa = 0.88$), categorizing methodological strengths, risk of bias, and reporting gaps.
     \item \textbf{Reproducible Tri-Modal Architecture:} A unified deep learning architecture integrating Opcode Transformers, Control Flow Graph GIN encoders, and dynamic Syscall Bi-LSTMs, regularized through pairwise InfoNCE contrastive alignment and Volumetric Gramian (GRAM) non-orthogonality loss to mitigate asynchronous channel collapse.
     \item \textbf{Repository-Grounded Benchmark Evaluation:} An empirical benchmark on an author-constructed 100,000-binary catalog manifest with 10,000 materialized multimodal instances (7,000 train, 1,500 validation, 1,500 held-out test), establishing an observed test accuracy of $99.73\%$ (Wilson 95\% CI: $[99.32\%, 99.90\%]$, bootstrap 95\% CI: $[99.47\%, 99.93\%]$) with zero false positives (100.00\% specificity) and four false negatives ($0.54\%$ FNR).
     \item \textbf{Controlled Ablation and Robustness Evaluation:} Five controlled component ablations isolating the marginal contribution of each modality and alignment objective ($\Delta\text{F1}$ ranging from $-0.0296$ for GRAM removal to $-0.0744$ for Opcode Transformer removal), accompanied by stress-testing across four adversarial code transformations (UPX packing, dead-code insertion, control-flow flattening, and sandbox stalling) evaluated alongside an unperturbed clean baseline.
@@ -89,42 +89,42 @@ Screening was executed across two progressive stages based on predetermined crit
 \end{itemize}
 
 \subsection{Study Selection and Inter-Rater Agreement}\label{sec:prisma_selection}
-Initial title and abstract screening was conducted independently by two reviewers, eliminating 568 studies. Full texts of the remaining 58 candidate studies were inspected in detail. Disagreements were adjudicated by a senior third reviewer, achieving an inter-rater Cohen's kappa coefficient of $\kappa = 0.84$, indicating strong reliability. A total of 43 full texts were excluded with documented rationales: 16 non-refereed preprints or non-journal reports, 14 lacking reproducible evaluation protocols or accessible artifacts, 8 addressing non-PE architectures outside the target scope, and 5 lacking standardized classification metric definitions. Exactly 15 primary peer-reviewed journal benchmark studies were retained (Fig.~\ref{fig:prisma_flow} and Table~\ref{tab:primary_studies}).
+Initial title and abstract screening was conducted independently by two reviewers, eliminating 568 studies. Full texts of the remaining 58 candidate studies were inspected in detail. Disagreements were adjudicated by a senior third reviewer, achieving an inter-rater Cohen's kappa coefficient of $\kappa = 0.84$, indicating strong reliability. A total of 43 full texts were excluded with documented rationales: 16 non-refereed preprints or non-journal reports, 14 lacking reproducible evaluation protocols or accessible artifacts, 8 addressing non-PE architectures outside the target scope, and 5 lacking standardized classification metric definitions. Exactly 15 peer-reviewed journal benchmark studies were retained: 13 primary empirical investigations and 2 benchmark synthesis reviews (Fig.~\ref{fig:prisma_flow} and Table~\ref{tab:primary_studies}).
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.78\textwidth]{figures/fig1_prisma_flow.png}
-\caption{PRISMA 2020 Flow Diagram depicting database ingestion ($n = 842$), deduplication ($n = 216$), screening ($n = 626$), full-text assessment ($n = 58$), and final inclusion of 15 primary peer-reviewed journal benchmark studies.}\label{fig:prisma_flow}
+\caption{PRISMA 2020 Flow Diagram depicting database ingestion ($n = 842$), deduplication ($n = 216$), screening ($n = 626$), full-text assessment ($n = 58$), and final inclusion of 15 peer-reviewed journal benchmark studies (13 primary empirical investigations and 2 benchmark synthesis reviews).}\label{fig:prisma_flow}
 \end{figure}
 
 \subsection{Quality and Risk-of-Bias Assessment}\label{sec:prisma_bias}
-Each included primary study was assessed across six Domain Quality Criteria (DQA): DQA1 (Dataset provenance clarity), DQA2 (Train/test leakage prevention), DQA3 (Zero-day evaluation design), DQA4 (Baseline comparability), DQA5 (Hyperparameter transparency), and DQA6 (Statistical significance and confidence reporting). Each criterion was graded as High Quality (2), Moderate Quality (1), or Low Quality / High Risk of Bias (0) (Table~\ref{tab:risk_of_bias}).
+Each included study was assessed across six Domain Quality Criteria (DQA): DQA1 (Dataset provenance clarity), DQA2 (Train/test leakage prevention), DQA3 (Zero-day evaluation design), DQA4 (Baseline comparability), DQA5 (Hyperparameter transparency), and DQA6 (Statistical significance and confidence reporting). Each criterion was graded as High Quality (2), Moderate Quality (1), or Low Quality / High Risk of Bias (0) (Table~\ref{tab:risk_of_bias}).
 
 \begin{tableorg}[t]
 \centering
-\caption{Comprehensive evidence matrix of the 15 included primary peer-reviewed journal benchmark studies (PRISMA 2020 corpus).}\label{tab:primary_studies}
+\caption{Comprehensive evidence matrix of the 15 included peer-reviewed journal benchmark studies (13 primary empirical investigations and 2 benchmark synthesis reviews, PRISMA 2020 corpus).}\label{tab:primary_studies}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lllllll}
 \toprule
-ID & Study & Venue & Modalities & Architecture \& Fusion & Benchmark Dataset & Primary Findings \\
+ID & Study & Venue & Article Type & Modalities & Benchmark Dataset & Primary Findings \\
 \midrule
-S01 & Gibert et al. \cite{Gibert2020} & JNCA & Opcode, Byte & CNN-LSTM Late Fusion & Drebin, Malimg (15,000) & 96.2\% Acc; static only \\
-S02 & Landman \& Nissim \cite{Landman2021DeepHook} & Neural Net & Syscall & Deep-Hook MLP/CNN & Linux Cloud (12,000) & 98.1\% Acc; timeout prone \\
-S03 & Jiang et al. \cite{BinCola2024} & IEEE TSE & Asm, CFG & BinCola Contrastive & Diverse Binaries (50,000) & Contrastive alignment \\
-S04 & Kim et al. \cite{Kim2023Revisiting} & IEEE TSE & Disasm, CFG & Interpretable Engineering & Standard Binaries (100,000) & Lessons on BCSA \\
-S05 & Han et al. \cite{SHIELD2026} & ESWA & CFG, Semantics & SHIELD Graph Contrast & Malware Corpus (24,000) & 98.4\% Acc; semantic GNN \\
-S06 & Liu et al. \cite{FewMHGCL2023} & IEEE TDSC & Dynamic Graph & FewM-HGCL Contrastive & Real-world Malware (18,500) & 97.8\% Acc; few-shot graph \\
-S07 & Qiang et al. \cite{Qiang2022} & Comp \& Sec & Control Traces & Deep Neural Network & PE Corpus (32,000) & 98.2\% Acc on CFG traces \\
-S08 & Joyce et al. \cite{Joyce2023MOTIF} & Comp \& Sec & PE, Metadata & MOTIF Reference Benchmark & MOTIF (3,095 reference) & Ground truth family labels \\
-S09 & Jiang et al. \cite{Jiang2024BenchMFC} & Comp \& Sec & Static, Dynamic & BenchMFC Concept Drift & Malware Corpus (40,000) & Trustworthy classification \\
-S10 & Guerra \& Bahsi \cite{Guerra2022} & Comp \& Sec & API, Opcodes & Longitudinal Classifier & Longitudinal PE (25,000) & Data drift over time \\
-S11 & Alzaylaee et al. \cite{Alzaylaee2020} & Comp \& Sec & Static, Dynamic & DL-Droid DBN/DNN & Real Devices (30,000) & 99.6\% Acc hybrid analysis \\
-S12 & Zhang et al. \cite{Zhang2019} & Comp \& Sec & Multi-view PE & Scalable Framework & Android/PE (45,000) & 97.9\% Acc; family attribution \\
-S13 & Liu et al. \cite{Codeformer2023} & Electronics & Asm, CFG & Codeformer GNN-Transf & Linux/PE (20,000) & 97.4\% Acc similarity \\
-S14 & Han et al. \cite{MalInsight2019} & JNCA & System Calls & MalInsight Profiling & Dynamic Traces (22,000) & 98.1\% Acc on syscalls \\
-S15 & Redhu et al. \cite{Redhu2024} & Front Phys & Byte, Opcode & Deep Learning Review & Cyberspace (35,000) & 96.8\% Acc survey benchmark \\
+S01 & Gibert et al. \cite{Gibert2020} & JNCA & Survey Review & Opcode, Byte & Drebin, Malimg (15,000) & 96.2\% Acc; static survey \\
+S02 & Landman \& Nissim \cite{Landman2021DeepHook} & Neural Net & Primary Research & Syscall, Hooks & Linux Cloud (12,000) & 98.1\% Acc; timeout prone \\
+S03 & Jiang et al. \cite{BinCola2024} & IEEE TSE & Primary Research & Asm, CFG & Diverse Binaries (50,000) & Contrastive alignment \\
+S04 & Kim et al. \cite{Kim2023Revisiting} & IEEE TSE & Empirical Study & Disasm, CFG & Standard Binaries (100,000) & Lessons on BCSA \\
+S05 & Han et al. \cite{SHIELD2026} & ESWA & Primary Research & CFG, Semantics & Malware Corpus (24,000) & 98.4\% Acc; semantic GNN \\
+S06 & Liu et al. \cite{FewMHGCL2023} & IEEE TDSC & Primary Research & Dynamic Graph & Real-world Malware (18,500) & 97.8\% Acc; few-shot graph \\
+S07 & Qiang et al. \cite{Qiang2022} & Comp \& Sec & Primary Research & Control Traces & PE Corpus (32,000) & 98.2\% Acc on CFG traces \\
+S08 & Joyce et al. \cite{Joyce2023MOTIF} & Comp \& Sec & Reference Dataset & PE, Metadata & MOTIF (3,095 reference) & Ground truth family labels \\
+S09 & Jiang et al. \cite{Jiang2024BenchMFC} & Comp \& Sec & Benchmark Dataset & Static, Dynamic & Malware Corpus (40,000) & Trustworthy classification \\
+S10 & Guerra \& Bahsi \cite{Guerra2022} & Comp \& Sec & Primary Research & API, Opcodes & Longitudinal PE (25,000) & Data drift over time \\
+S11 & Alzaylaee et al. \cite{Alzaylaee2020} & Comp \& Sec & Primary Research & Static, Dynamic & Real Devices (30,000) & 99.6\% Acc hybrid analysis \\
+S12 & Zhang et al. \cite{Zhang2019} & Comp \& Sec & Primary Research & Multi-view PE & Android/PE (45,000) & 97.9\% Acc; family attribution \\
+S13 & Liu et al. \cite{Codeformer2023} & Electronics & Primary Research & Asm, CFG & Linux/PE (20,000) & 97.4\% Acc similarity \\
+S14 & Han et al. \cite{MalInsight2019} & JNCA & Primary Research & System Calls & Dynamic Traces (22,000) & 98.1\% Acc on syscalls \\
+S15 & Redhu et al. \cite{Redhu2024} & Front Phys & Survey Review & Byte, Opcode & Cyberspace (35,000) & 96.8\% Acc survey benchmark \\
 \midrule
-\textbf{Ours} & \textbf{Proposed Framework} & \textbf{Q1 Journal} & \textbf{Op, CFG, Sys} & \textbf{Transf+GIN+LSTM+GRAM} & \textbf{Author 100K (10K shards)} & \textbf{99.73\% Acc, 100\% Holdout} \\
+\textbf{Ours} & \textbf{Proposed Framework} & \textbf{This Study} & \textbf{Primary Research} & \textbf{Op, CFG, Sys} & \textbf{Author 100K (10K shards)} & \textbf{99.73\% Acc, 100\% Holdout} \\
 \bottomrule
 \end{tabular}%
 }
@@ -132,7 +132,7 @@ S15 & Redhu et al. \cite{Redhu2024} & Front Phys & Byte, Opcode & Deep Learning 
 
 \begin{tableorg}[t]
 \centering
-\caption{Methodological quality and risk-of-bias assessment across the 15 primary journal studies (DQA1: Data Provenance, DQA2: Leakage Audit, DQA3: Zero-Day Protocol, DQA4: Baselines, DQA5: Hyperparameters, DQA6: Statistical Rigor).}\label{tab:risk_of_bias}
+\caption{Methodological quality and risk-of-bias assessment across the 15 included journal benchmark studies (DQA1: Data Provenance, DQA2: Leakage Audit, DQA3: Zero-Day Protocol, DQA4: Baselines, DQA5: Hyperparameters, DQA6: Statistical Rigor).}\label{tab:risk_of_bias}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccccr}
 \toprule
@@ -487,7 +487,7 @@ The empirical results demonstrate that cross-modal representation alignment achi
 Primary limitations include: (1) single-ISA Windows PE focus, which restricts direct application to ELF or Mach-O binaries; (2) sandbox queue dependence for the $13.8\%$ deferred ambiguous cohort; (3) vulnerability of static opcodes to compression entropy under UPX packing ($24.00\%$ FPR on benign packed binaries); (4) sequence truncation under dead-code insertion ($40.00\%$ FNR); and (5) reliance on catalog simulation metadata for chronological partitioning rather than longitudinal prospective field data. Future research will explore intermediate compiler representations (e.g., LLVM IR) to achieve cross-ISA portability and evaluate longitudinal telemetry across multi-year enterprise deployments.
 
 \section{Conclusion}\label{sec:conclusion}
-This study presented a reproducible, evidence-driven tri-modal deep learning framework for malware detection, accompanied by a PRISMA 2020 systematic review of 15 primary peer-reviewed journal benchmark studies. By regularizing Opcode Transformers, CFG-GINs, and Syscall Bi-LSTMs via pairwise InfoNCE alignment and Volumetric Gramian loss, the architecture achieved $99.73\%$ accuracy and $100.00\%$ precision on 1,500 held-out test binaries, with $100.00\%$ recall on a single-family WannaCry sample holdout. Transparent disclosure of failure modes under UPX packing ($24.00\%$ benign FPR) and dead-code insertion ($40.00\%$ FNR) establishes defensible operational boundaries for the evaluated enterprise deployment scenario.
+This study presented a reproducible, evidence-driven tri-modal deep learning framework for malware detection, accompanied by a PRISMA 2020 systematic review of 15 peer-reviewed journal benchmark studies (13 primary empirical investigations and 2 benchmark synthesis reviews). By regularizing Opcode Transformers, CFG-GINs, and Syscall Bi-LSTMs via pairwise InfoNCE alignment and Volumetric Gramian loss, the architecture achieved $99.73\%$ accuracy and $100.00\%$ precision on 1,500 held-out test binaries, with $100.00\%$ recall on a single-family WannaCry sample holdout. Transparent disclosure of failure modes under UPX packing ($24.00\%$ benign FPR) and dead-code insertion ($40.00\%$ FNR) establishes defensible operational boundaries for the evaluated enterprise deployment scenario.
 
 \section{Data and Code Availability}\label{sec:availability}
 The complete code repository, model checkpoints, tensor shards, and automated test suite are openly available at \url{https://github.com/kohlirupesh19/Multi-Model.git} on the dedicated \texttt{publication-validation} branch. The repository provides scripts and artifacts for reproducing the reported experiments (\texttt{bash reproduce\_all.sh} or \texttt{python3 reproduce\_all.py}). Dedicated verification audit ledgers and raw evaluation artifacts are provided in the repository's \texttt{reports/} and \texttt{results/verified/} directories.
