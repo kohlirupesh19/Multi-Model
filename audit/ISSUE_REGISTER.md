@@ -30,8 +30,8 @@
 | **ISSUE-16** | Mathematical/notation consistency | Major | 16 | **CLOSED — VERIFIED** | `audit/ISSUE-16_VERIFICATION.md` |
 | **ISSUE-17** | Cross-section numerical consistency | Critical | 17 | **CLOSED — VERIFIED** | `audit/ISSUE-17_VERIFICATION.md` |
 | **ISSUE-18** | Statistical methodology audit | Major | 18 | **CLOSED — VERIFIED** | `audit/ISSUE-18_VERIFICATION.md` |
-| **ISSUE-19** | Reference/DOI/indexing verification | Major | 19 | **UNDER AUDIT** | `audit/reference_verification.csv` |
-| **ISSUE-20** | Final clean-clone reproducibility verification | Critical | 20 | QUEUED | `audit/reproducibility_report.md` |
+| **ISSUE-19** | Reference/DOI/indexing verification | Major | 19 | **CLOSED — VERIFIED** | `audit/ISSUE-19_VERIFICATION.md` |
+| **ISSUE-20** | Final clean-clone reproducibility verification | Critical | 20 | **UNDER AUDIT** | `audit/reproducibility_report.md` |
 
 ---
 
