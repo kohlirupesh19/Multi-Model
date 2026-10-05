@@ -13,8 +13,8 @@
 | Issue ID | Description / Area | Severity | Priority Order | Current Status | Verification Artifact |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **ISSUE-01** | Five adversarial obfuscations vs four reported transformations | Critical | 1 | **CLOSED — VERIFIED** | `audit/ISSUE-01_VERIFICATION.md` |
-| **ISSUE-02** | Ten architectural ablations vs five actually displayed ablations | Critical | 2 | **UNDER AUDIT** | `audit/ISSUE-02_VERIFICATION.md` |
-| **ISSUE-03** | Systematic-review eligibility inconsistency | Major | 3 | QUEUED | `audit/systematic_review_eligibility.csv` |
+| **ISSUE-02** | Ten architectural ablations vs five actually displayed ablations | Critical | 2 | **CLOSED — VERIFIED** | `audit/ISSUE-02_VERIFICATION.md` |
+| **ISSUE-03** | Systematic-review eligibility inconsistency | Major | 3 | **UNDER AUDIT** | `audit/systematic_review_eligibility.csv` |
 | **ISSUE-04** | Primary-study vs review-article classification | Major | 4 | QUEUED | `audit/ISSUE-04_VERIFICATION.md` |
 | **ISSUE-05** | Single-modality studies potentially violating inclusion criteria | Major | 5 | QUEUED | `audit/ISSUE-05_VERIFICATION.md` |
 | **ISSUE-06** | F1 confidence interval methodology/terminology | Major | 6 | QUEUED | `results/verified/statistical_metrics.json` |
