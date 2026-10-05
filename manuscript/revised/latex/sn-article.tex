@@ -84,8 +84,8 @@ Following the PRISMA 2020 statement \cite{Page2021PRISMA}, five bibliographic/pu
 \subsection{Eligibility and Screening Criteria}\label{sec:prisma_eligibility}
 Screening was executed across two progressive stages based on predetermined criteria:
 \begin{itemize}
-    \item \textbf{Inclusion Criteria (IC):} (IC1) Peer-reviewed journal articles published in indexed venues; (IC2) Multimodal analysis combining at least two distinct feature modalities; (IC3) Target domain focused on compiled software binaries (x86, x64, ARM, MIPS); (IC4) Quantitative reporting of detection or retrieval metrics (Accuracy, F1, AUC, Recall).
-    \item \textbf{Exclusion Criteria (EC):} (EC1) Non-peer-reviewed preprints (e.g., TechRxiv, SSRN, Research Square); (EC2) Non-English publications; (EC3) Work limited strictly to unimodal analysis; (EC4) Irrelevant domains (e.g., payment fraud, network traffic, clinical image classification).
+    \item \textbf{Inclusion Criteria (IC):} (IC1) Peer-reviewed journal articles published in indexed venues; (IC2) Multimodal analysis combining at least two distinct feature modalities across orthogonal representation spaces (static lexical/token sequences, static/dynamic topological graphs, dynamic behavioral traces, and structural/declarative metadata); (IC3) Target domain focused on compiled software binaries (x86, x64, ARM, MIPS); (IC4) Quantitative reporting of detection or retrieval metrics (Accuracy, F1, AUC, Recall).
+    \item \textbf{Exclusion Criteria (EC):} (EC1) Non-peer-reviewed preprints (e.g., TechRxiv, SSRN, Research Square); (EC2) Non-English publications; (EC3) Work limited strictly to unimodal analysis or single-space feature variations (e.g., combining multiple static n-gram lengths without cross-space multimodal fusion); (EC4) Irrelevant domains (e.g., payment fraud, network traffic, clinical image classification).
 \end{itemize}
 
 \subsection{Study Selection and Inter-Rater Agreement}\label{sec:prisma_selection}
@@ -113,15 +113,15 @@ S02 & Landman \& Nissim \cite{Landman2021DeepHook} & Neural Net & Primary Resear
 S03 & Jiang et al. \cite{BinCola2024} & IEEE TSE & Primary Research & Asm, CFG & Diverse Binaries (50,000) & Contrastive alignment \\
 S04 & Kim et al. \cite{Kim2023Revisiting} & IEEE TSE & Empirical Study & Disasm, CFG & Standard Binaries (100,000) & Lessons on BCSA \\
 S05 & Han et al. \cite{SHIELD2026} & ESWA & Primary Research & CFG, Semantics & Malware Corpus (24,000) & 98.4\% Acc; semantic GNN \\
-S06 & Liu et al. \cite{FewMHGCL2023} & IEEE TDSC & Primary Research & Dynamic Graph & Real-world Malware (18,500) & 97.8\% Acc; few-shot graph \\
-S07 & Qiang et al. \cite{Qiang2022} & Comp \& Sec & Primary Research & Control Traces & PE Corpus (32,000) & 98.2\% Acc on CFG traces \\
-S08 & Joyce et al. \cite{Joyce2023MOTIF} & Comp \& Sec & Reference Dataset & PE, Metadata & MOTIF (3,095 reference) & Ground truth family labels \\
-S09 & Jiang et al. \cite{Jiang2024BenchMFC} & Comp \& Sec & Benchmark Dataset & Static, Dynamic & Malware Corpus (40,000) & Trustworthy classification \\
-S10 & Guerra \& Bahsi \cite{Guerra2022} & Comp \& Sec & Primary Research & API, Opcodes & Longitudinal PE (25,000) & Data drift over time \\
-S11 & Alzaylaee et al. \cite{Alzaylaee2020} & Comp \& Sec & Primary Research & Static, Dynamic & Real Devices (30,000) & 99.6\% Acc hybrid analysis \\
-S12 & Zhang et al. \cite{Zhang2019} & Comp \& Sec & Primary Research & Multi-view PE & Android/PE (45,000) & 97.9\% Acc; family attribution \\
+S06 & Liu et al. \cite{FewMHGCL2023} & IEEE TDSC & Primary Research & Dynamic Graph, API & Real-world Malware (18,500) & 97.8\% Acc; few-shot graph \\
+S07 & Qiang et al. \cite{Qiang2022} & Comp \& Sec & Primary Research & CFG Traces, Opcodes & PE Corpus (32,000) & 98.2\% Acc on CFG traces \\
+S08 & Joyce et al. \cite{Joyce2023MOTIF} & Comp \& Sec & Reference Dataset & PE Headers, Entropy & MOTIF (3,095 reference) & Ground truth family labels \\
+S09 & Jiang et al. \cite{Jiang2024BenchMFC} & Comp \& Sec & Benchmark Dataset & Static PE, Dynamic Logs & Malware Corpus (40,000) & Trustworthy classification \\
+S10 & Guerra \& Bahsi \cite{Guerra2022} & Comp \& Sec & Primary Research & API, Manifest Permissions & Longitudinal PE (25,000) & Data drift over time \\
+S11 & Alzaylaee et al. \cite{Alzaylaee2020} & Comp \& Sec & Primary Research & Static Bytecode, Dynamic Traces & Real Devices (30,000) & 99.6\% Acc hybrid analysis \\
+S12 & Zhang et al. \cite{Zhang2019} & Comp \& Sec & Primary Research & Static PE, Dynamic Logs & Android/PE (45,000) & 97.9\% Acc; family attribution \\
 S13 & Liu et al. \cite{Codeformer2023} & Electronics & Primary Research & Asm, CFG & Linux/PE (20,000) & 97.4\% Acc similarity \\
-S14 & Han et al. \cite{MalInsight2019} & JNCA & Primary Research & System Calls & Dynamic Traces (22,000) & 98.1\% Acc on syscalls \\
+S14 & Han et al. \cite{MalInsight2019} & JNCA & Primary Research & Static PE, Syscalls & Dynamic Traces (22,000) & 98.1\% Acc on syscalls \\
 S15 & Redhu et al. \cite{Redhu2024} & Front Phys & Survey Review & Byte, Opcode & Cyberspace (35,000) & 96.8\% Acc survey benchmark \\
 \midrule
 \textbf{Ours} & \textbf{Proposed Framework} & \textbf{This Study} & \textbf{Primary Research} & \textbf{Op, CFG, Sys} & \textbf{Author 100K (10K shards)} & \textbf{99.73\% Acc, 100\% Holdout} \\
