@@ -108,4 +108,4 @@ NUM-165,128,dim,multimodal_malware/configs/scale_100k.yaml,EXP-HYPERPARAM-LATENT
 NUM-166,0.07,tau,multimodal_malware/configs/scale_100k.yaml,EXP-HYPERPARAM-TAU,Sec 8.4 (line 227),VERIFIED_EXACT
 NUM-167,0.50,gamma,multimodal_malware/configs/scale_100k.yaml,EXP-HYPERPARAM-GAMMA,Sec 8.6 (line 259),VERIFIED_EXACT
 NUM-168,0.10,margin,multimodal_malware/configs/scale_100k.yaml,EXP-HYPERPARAM-LAMBDA-SEP,"Sec 8.5 (line 245), Sec 8.6 (line 259)",VERIFIED_EXACT
-NUM-169,54,unit tests,tests/ (pytest),EXP-REPRODUCIBILITY-TESTS,Sec 20 (line 536),VERIFIED_EXACT
+NUM-169,71,unit tests,tests/ (pytest),EXP-REPRODUCIBILITY-TESTS,Sec 20 (line 536),VERIFIED_EXACT

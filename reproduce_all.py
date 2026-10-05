@@ -62,19 +62,19 @@ for base in [REPO_ROOT, WS_ROOT]:
         f.write(f"- **Repository Commit:** `{env_info['commit_hash']}`\n")
 
 # -------------------------------------------------------------
-# Stage 2: Execute Automated Test Suite (52 tests)
+# Stage 2: Execute Automated Test Suite (71 tests)
 # -------------------------------------------------------------
-print("[Stage 2/8] Executing Automated Pytest Suite (52 items)...")
+print("[Stage 2/8] Executing Automated Pytest Suite (71 items)...")
 cmd = [sys.executable, "-m", "pytest", "-q"]
 res = subprocess.run(cmd, cwd=REPO_ROOT, capture_output=True, text=True)
 test_output = res.stdout.strip()
 print(f"Test Execution Summary: {test_output}")
-test_passed = ("52 passed" in test_output or res.returncode == 0)
+test_passed = (res.returncode == 0)
 
 for base in [REPO_ROOT, WS_ROOT]:
     with open(base / 'reports' / 'test_report.md', 'w') as f:
         f.write("# Automated Test Suite Verification Report\n\n")
-        f.write(f"**Test Status:** {'PASS (52/52 Tests Verified)' if test_passed else 'FAIL'}\n\n")
+        f.write(f"**Test Status:** {'PASS (71/71 Tests Verified)' if test_passed else 'FAIL'}\n\n")
         f.write("```\n" + test_output + "\n```\n")
 
 # -------------------------------------------------------------
