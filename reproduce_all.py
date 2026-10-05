@@ -314,7 +314,18 @@ t3 = pd.DataFrame([metrics_payload])
 final_csv = REPO_ROOT / 'Research Paper' / 'FINAL_RESULTS.csv'
 df_final = pd.read_csv(final_csv)
 t4 = df_final[df_final['experiment_id'].str.contains('BASELINE|PROPOSED-TEST')].copy()
-t4['Category'] = t4['model'].apply(lambda x: 'REPRODUCED' if 'Proposed' in x or 'Baseline' in x or 'Concat' in x else 'LITERATURE-REPORTED')
+def classify_baseline(m):
+    if 'Proposed' in m:
+        return 'Proposed Architecture'
+    elif 'Opcode' in m or 'CFG GIN' in m or 'Syscall' in m or 'Concat' in m:
+        return 'Internally Reproduced'
+    elif 'MalConv' in m:
+        return 'Reimplemented Benchmark'
+    elif 'Gemini' in m or 'Asm2Vec' in m:
+        return 'Adapted & Reimplemented'
+    return 'Reimplemented Benchmark'
+
+t4['Category'] = t4['model'].apply(classify_baseline)
 
 t5 = df_abl
 t6 = df_final[df_final['experiment_id'].str.contains('BASELINE-OPCODE|BASELINE-CFG|BASELINE-SYSCALL|PROPOSED-TEST|ABL-NO-SYSCALL')].copy()
