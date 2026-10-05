@@ -28,8 +28,8 @@
 | **ISSUE-14** | Latency terminology and end-to-end scope | Critical | 14 | **CLOSED — VERIFIED** | `audit/ISSUE-14_VERIFICATION.md` |
 | **ISSUE-15** | Data availability wording | Major | 15 | **CLOSED — VERIFIED** | `audit/ISSUE-15_VERIFICATION.md` |
 | **ISSUE-16** | Mathematical/notation consistency | Major | 16 | **CLOSED — VERIFIED** | `audit/ISSUE-16_VERIFICATION.md` |
-| **ISSUE-17** | Cross-section numerical consistency | Critical | 17 | **UNDER AUDIT** | `audit/numerical_dictionary.csv` |
-| **ISSUE-18** | Statistical methodology audit | Major | 18 | QUEUED | `audit/statistical_audit_report.md` |
+| **ISSUE-17** | Cross-section numerical consistency | Critical | 17 | **CLOSED — VERIFIED** | `audit/ISSUE-17_VERIFICATION.md` |
+| **ISSUE-18** | Statistical methodology audit | Major | 18 | **UNDER AUDIT** | `audit/statistical_audit_report.md` |
 | **ISSUE-19** | Reference/DOI/indexing verification | Major | 19 | QUEUED | `audit/reference_verification.csv` |
 | **ISSUE-20** | Final clean-clone reproducibility verification | Critical | 20 | QUEUED | `audit/reproducibility_report.md` |
 
