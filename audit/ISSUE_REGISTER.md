@@ -25,8 +25,8 @@
 | **ISSUE-11** | Temporal evaluation terminology | Critical | 11 | **CLOSED — VERIFIED** | `audit/ISSUE-11_VERIFICATION.md` |
 | **ISSUE-12** | WannaCry/family-holdout claim scope | Major | 12 | **CLOSED — VERIFIED** | `audit/ISSUE-12_VERIFICATION.md` |
 | **ISSUE-13** | Production-deployment claim strength | Major | 13 | **CLOSED — VERIFIED** | `audit/ISSUE-13_VERIFICATION.md` |
-| **ISSUE-14** | Latency terminology and end-to-end scope | Critical | 14 | **UNDER AUDIT** | `audit/ISSUE-14_VERIFICATION.md` |
-| **ISSUE-15** | Data availability wording | Major | 15 | QUEUED | `audit/ISSUE-15_VERIFICATION.md` |
+| **ISSUE-14** | Latency terminology and end-to-end scope | Critical | 14 | **CLOSED — VERIFIED** | `audit/ISSUE-14_VERIFICATION.md` |
+| **ISSUE-15** | Data availability wording | Major | 15 | **UNDER AUDIT** | `audit/ISSUE-15_VERIFICATION.md` |
 | **ISSUE-16** | Mathematical/notation consistency | Major | 16 | QUEUED | `audit/equation_implementation_matrix.csv` |
 | **ISSUE-17** | Cross-section numerical consistency | Critical | 17 | QUEUED | `audit/numerical_dictionary.csv` |
 | **ISSUE-18** | Statistical methodology audit | Major | 18 | QUEUED | `audit/statistical_audit_report.md` |
