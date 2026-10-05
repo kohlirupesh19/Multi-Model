@@ -208,9 +208,9 @@ A Control Flow Graph is formalized as $\mathcal{G} = (\mathcal{V}, \mathcal{E}, 
 \begin{equation}
 \mathbf{h}_v^{(k)} = \text{MLP}^{(k)}\left(\left(1 + \epsilon^{(k)}\right)\mathbf{h}_v^{(k-1)} + \sum_{u \in \mathcal{N}(v)} \mathbf{h}_u^{(k-1)}\right)
 \end{equation}
-where $\epsilon^{(k)}$ is a learnable scalar. Graph-level pooling aggregates node embeddings:
+where $\epsilon^{(k)}$ is a learnable scalar. Graph-level multi-scale readout concatenates global mean and max pooled node embeddings across basic blocks:
 \begin{equation}
-\mathbf{h}_{\mathcal{G}} = \sum_{k=1}^K \text{LayerNorm}\left(\sum_{v \in \mathcal{V}} \mathbf{h}_v^{(k)}\right), \quad \mathbf{z}_{\text{cfg}} = \frac{g_{\text{cfg}}(\mathbf{h}_{\mathcal{G}})}{\|g_{\text{cfg}}(\mathbf{h}_{\mathcal{G}})\|_2} \in \mathbb{S}^{d-1}
+\mathbf{h}_{\mathcal{G}} = \left[\frac{1}{|\mathcal{V}|} \sum_{v \in \mathcal{V}} \mathbf{h}_v^{(K)} \;\Bigg\|\; \max_{v \in \mathcal{V}} \mathbf{h}_v^{(K)}\right], \quad \mathbf{z}_{\text{cfg}} = \frac{g_{\text{cfg}}(\mathbf{h}_{\mathcal{G}})}{\|g_{\text{cfg}}(\mathbf{h}_{\mathcal{G}})\|_2} \in \mathbb{S}^{d-1}
 \end{equation}
 
 \subsection{Dynamic System Call Bi-LSTM}\label{sec:math_syscall}
@@ -242,9 +242,9 @@ To prevent tri-modal representation collapse onto a lower-dimensional subspace, 
 \mathbf{z}_{\text{sys}}^\top \mathbf{z}_{\text{op}} & \mathbf{z}_{\text{sys}}^\top \mathbf{z}_{\text{cfg}} & \mathbf{z}_{\text{sys}}^\top \mathbf{z}_{\text{sys}}
 \end{bmatrix}
 \end{equation}
-Since all embeddings have unit norm ($\mathbf{G}_{ii} = 1$), the determinant $\det(\mathbf{G})$ corresponds to the squared volume of the parallelotope spanned by $\{\mathbf{z}_{\text{op}}, \mathbf{z}_{\text{cfg}}, \mathbf{z}_{\text{sys}}\}$ in $\mathbb{R}^{d}$. If the modalities collapse to collinearity, $\det(\mathbf{G}) \to 0$. The Volumetric GRAM loss with numerical stabilizer $\epsilon = 10^{-4}$ penalizes rank deficiency:
+Since all embeddings have unit norm ($\mathbf{G}_{ii} = 1$), the Gramian determinant $\det(\mathbf{G})$ quantifies the squared volume of the parallelotope spanned by $\{\mathbf{z}_{\text{op}}, \mathbf{z}_{\text{cfg}}, \mathbf{z}_{\text{sys}}\}$ in $\mathbb{R}^{d}$. For true multimodal triplets of binary $i \in \mathcal{B}$, representations are regularized towards a compact shared manifold by minimizing the positive Gramian volume $\det(\mathbf{G}_i^+ + \epsilon \mathbf{I}_3)$, while cross-sample negative triplets $\mathbf{G}_i^-$ are regularized to preserve semantic volumetric dispersion. With numerical stabilizer $\epsilon = 10^{-4}$ and separation weight $\lambda_{\text{sep}} = 0.10$, the Volumetric GRAM loss is formulated as:
 \begin{equation}
-\mathcal{L}_{\text{GRAM}} = -\frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \log\left(\det(\mathbf{G}_i + \epsilon \mathbf{I}_3)\right)
+\mathcal{L}_{\text{GRAM}} = \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \det(\mathbf{G}_i^+ + \epsilon \mathbf{I}_3) - \lambda_{\text{sep}} \frac{1}{|\mathcal{B}|} \sum_{i \in \mathcal{B}} \log\left(1 + \det(\mathbf{G}_i^- + \epsilon \mathbf{I}_3)\right)
 \end{equation}
 
 \subsection{Attention Late Fusion and Joint Objective}\label{sec:math_fusion}
