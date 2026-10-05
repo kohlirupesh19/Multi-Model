@@ -328,7 +328,7 @@ Gemini Structure2Vec & Reimplemented Benchmark & 631 & 650 & 106 & 113 & 85.40\%
 \caption{Confusion matrix evaluated on the 1,500 held-out test binaries: 740 True Positives, 756 True Negatives, 0 False Positives, and 4 False Negatives.}\label{fig:confusion_matrix}
 \end{figure}
 
-The Wilson score 95\% confidence interval for test accuracy is $[99.32\%, 99.90\%]$ (bootstrap 95\% CI: $[99.47\%, 99.93\%]$). For F1-score (positive-class F1: $0.9973$; macro-averaged F1: $0.9973$), the Wilson interval is $[0.9931, 0.9989]$ (bootstrap 95\% CI: $[0.9946, 0.9993]$). Model discrimination achieves a Receiver Operating Characteristic Area Under Curve ($\text{ROC-AUC} = 1.0000$) and Precision-Recall Area Under Curve ($\text{PR-AUC} = 1.0000$) (Fig.~\ref{fig:roc_pr_curves}).
+The Wilson score 95\% confidence interval for test accuracy is $[99.32\%, 99.90\%]$ (non-parametric percentile bootstrap 95\% CI: $[99.47\%, 99.93\%]$). For F1-score (positive-class F1: $0.9973$; macro-averaged F1: $0.9973$), because F1 is a nonlinear composite metric rather than an independent binomial proportion, uncertainty is appropriately quantified via non-parametric percentile bootstrap ($B = 10{,}000$ resamples), yielding a 95\% confidence interval of $[0.9946, 0.9993]$. Model discrimination achieves a Receiver Operating Characteristic Area Under Curve ($\text{ROC-AUC} = 1.0000$) and Precision-Recall Area Under Curve ($\text{PR-AUC} = 1.0000$) (Fig.~\ref{fig:roc_pr_curves}).
 
 \begin{figure}[t]
 \centering

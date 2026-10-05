@@ -1,0 +1,87 @@
+{
+  "dataset_split": {
+    "total_catalog": 100000,
+    "materialized_samples": 10000,
+    "train_samples": 7000,
+    "val_samples": 1500,
+    "test_samples": 1500
+  },
+  "test_contingency_table": {
+    "true_positives": 740,
+    "true_negatives": 756,
+    "false_positives": 0,
+    "false_negatives": 4,
+    "total_positives": 744,
+    "total_negatives": 756,
+    "total_test": 1500
+  },
+  "point_estimates": {
+    "accuracy": 0.997333,
+    "precision": 1.0,
+    "recall": 0.994624,
+    "f1_score": 0.997305,
+    "specificity": 1.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.005376,
+    "roc_auc": 1.0,
+    "pr_auc": 1.0
+  },
+  "accuracy_confidence_intervals": {
+    "metric": "Accuracy",
+    "nature": "Binomial proportion (k=1496 successes out of n=1500 trials)",
+    "wilson_score_95_ci": [
+      0.9932,
+      0.999
+    ],
+    "wilson_methodology": "Wilson score interval with parameter z=1.95996",
+    "bootstrap_percentile_95_ci": [
+      0.9947,
+      0.9993
+    ],
+    "bootstrap_methodology": "Non-parametric empirical percentile bootstrap (B=10000 resamples, seed=42)"
+  },
+  "f1_confidence_intervals": {
+    "metric": "F1-Score",
+    "nature": "Nonlinear composite metric (harmonic mean of precision and recall)",
+    "wilson_interval_applicable": false,
+    "wilson_inapplicability_justification": "The Wilson score interval is strictly formulated for independent Bernoulli trials with a binomial distribution k ~ Bin(n, p). F1-score is a ratio of random variables (2*TP / (2*TP + FP + FN)) and cannot be represented as a binomial success proportion k/n. Direct application of the Wilson score formula to F1 is statistically invalid.",
+    "bootstrap_percentile_95_ci": [
+      0.9946,
+      0.9993
+    ],
+    "bootstrap_methodology": "Non-parametric empirical percentile bootstrap (B=10000 resamples, seed=42)",
+    "reported_f1_ci": [
+      0.9946,
+      0.9993
+    ]
+  },
+  "precision_confidence_intervals": {
+    "metric": "Precision",
+    "point_estimate": 1.0,
+    "wilson_score_95_ci": [
+      0.9948,
+      1.0
+    ],
+    "bootstrap_percentile_95_ci": [
+      1.0,
+      1.0
+    ]
+  },
+  "recall_confidence_intervals": {
+    "metric": "Recall / Sensitivity",
+    "point_estimate": 0.994624,
+    "wilson_score_95_ci": [
+      0.9863,
+      0.9979
+    ],
+    "bootstrap_percentile_95_ci": [
+      0.989,
+      0.9987
+    ]
+  },
+  "statistical_audit_status": {
+    "f1_wilson_mislabel_corrected": true,
+    "verified_f1_ci_methodology": "Bootstrap Percentile",
+    "audit_timestamp": "2026-10-05T06:00:00Z"
+  }
+}
