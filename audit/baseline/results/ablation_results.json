@@ -1,0 +1,26 @@
+{
+  "full_model": {
+    "accuracy": 0.9973,
+    "f1": 0.9973
+  },
+  "without_gram": {
+    "accuracy": 0.968,
+    "f1": 0.9677
+  },
+  "without_infonce": {
+    "accuracy": 0.96,
+    "f1": 0.9595
+  },
+  "without_opcode": {
+    "accuracy": 0.924,
+    "f1": 0.9229
+  },
+  "without_cfg": {
+    "accuracy": 0.9407,
+    "f1": 0.9398
+  },
+  "without_syscall": {
+    "accuracy": 0.952,
+    "f1": 0.9513
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "device": "cpu",
+  "latencies_ms": {
+    "opcode_transformer_ms": 16.44,
+    "cfg_gin_ms": 0.86,
+    "syscall_bilstm_ms": 11.05,
+    "fusion_and_classifier_ms": 0.09,
+    "full_neural_forward_ms": 28.87,
+    "fast_static_triage_ms": 17.53
+  },
+  "throughput_samples_per_sec": 34.6,
+  "fast_triage_throughput_samples_per_sec": 57.0,
+  "memory_rss_mb": 512.5,
+  "memory_delta_mb": 44.08,
+  "is_laptop_capable": true
+}

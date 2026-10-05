@@ -1,0 +1,57 @@
+{
+  "clean": {
+    "accuracy": 1.0,
+    "f1_score": 1.0,
+    "fnr": 0.0,
+    "fpr": 0.0,
+    "attention_distribution": {
+      "opcode_weight": 0.606,
+      "cfg_weight": 0.173,
+      "syscall_weight": 0.221
+    }
+  },
+  "upx_packing": {
+    "accuracy": 0.88,
+    "f1_score": 0.8929,
+    "fnr": 0.0,
+    "fpr": 0.24,
+    "attention_distribution": {
+      "opcode_weight": 0.389,
+      "cfg_weight": 0.267,
+      "syscall_weight": 0.343
+    }
+  },
+  "dead_code_insertion": {
+    "accuracy": 0.8,
+    "f1_score": 0.75,
+    "fnr": 0.4,
+    "fpr": 0.0,
+    "attention_distribution": {
+      "opcode_weight": 0.528,
+      "cfg_weight": 0.206,
+      "syscall_weight": 0.267
+    }
+  },
+  "cfg_flattening": {
+    "accuracy": 0.96,
+    "f1_score": 0.9583,
+    "fnr": 0.08,
+    "fpr": 0.0,
+    "attention_distribution": {
+      "opcode_weight": 0.616,
+      "cfg_weight": 0.166,
+      "syscall_weight": 0.219
+    }
+  },
+  "sandbox_stalling": {
+    "accuracy": 0.98,
+    "f1_score": 0.9796,
+    "fnr": 0.04,
+    "fpr": 0.0,
+    "attention_distribution": {
+      "opcode_weight": 0.79,
+      "cfg_weight": 0.21,
+      "syscall_weight": 0.0
+    }
+  }
+}

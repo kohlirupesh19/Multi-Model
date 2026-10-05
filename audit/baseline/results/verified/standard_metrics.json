@@ -1,0 +1,28 @@
+{
+  "test_samples": 1500,
+  "tp": 740,
+  "tn": 756,
+  "fp": 0,
+  "fn": 4,
+  "accuracy": 0.997333,
+  "precision": 1.0,
+  "recall": 0.994624,
+  "f1_score": 0.997305,
+  "specificity": 1.0,
+  "fpr": 0.0,
+  "fnr": 0.005376,
+  "roc_auc": 1.0,
+  "pr_auc": 1.0,
+  "wilson_95_ci_accuracy": [
+    0.9932,
+    0.999
+  ],
+  "bootstrap_95_ci_accuracy": [
+    0.9947,
+    0.9993
+  ],
+  "bootstrap_95_ci_f1": [
+    0.9946,
+    0.9993
+  ]
+}
