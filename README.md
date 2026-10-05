@@ -152,16 +152,16 @@ Multi-Model/
 │   ├── evaluation_test.json            # Authoritative test metrics and 95% bootstrap CIs
 │   ├── evaluation_family_holdout.json  # 157 WannaCry holdout predictions and recall
 │   ├── evaluation_temporal.json        # Chronological temporal partition evaluation
-│   ├── robustness_results.json         # Adversarial robustness under 5 attack scenarios
+│   ├── robustness_results.json         # Adversarial robustness under 4 attack transformations and clean baseline
 │   ├── latency_benchmark.json          # Wall-clock CPU latency decomposition
 │   ├── roc_curves.csv                  # Exact coordinate points for ROC curves
 │   └── pr_curves.csv                   # Exact coordinate points for Precision-Recall curves
 │
 ├── configs/                            # Declarative training and evaluation YAML configs
 │   ├── full_multimodal.yaml            # Standard tri-modal architecture config
-│   ├── high_accuracy.yaml              # Production high-accuracy training config
+│   ├── high_accuracy.yaml              # Evaluated high-accuracy training config
 │   ├── contrastive.yaml                # Pure InfoNCE self-supervised pretraining
-│   ├── lightweight.yaml                # Low-latency edge deployment configuration
+│   ├── lightweight.yaml                # Low-latency evaluated edge configuration
 │   └── scale_100k.yaml                 # 100k distributed sharding configuration
 │
 ├── features_cache/                     # Precomputed feature cache & SQLite registry

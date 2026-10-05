@@ -35,7 +35,7 @@
 \affil[5]{\orgdiv{Department of Information Technology}, \orgname{Government Engineering College}, \orgaddress{\city{Gandhinagar}, \postcode{382028}, \state{Gujarat}, \country{India}}}
 
 \abstract{
-Single-modality binary analysis remains acutely vulnerable to adversarial evasion, including instruction substitution, control-flow flattening, and sandbox stalling. Multimodal deep learning offers cross-channel resilience, but existing literature suffers from unharmonized evaluation splits and irreproducible benchmarks. This study establishes a dual-contribution framework. First, following PRISMA 2020, we systematically review multimodal binary similarity analysis, auditing 15 peer-reviewed journal benchmark studies (13 primary empirical investigations and 2 benchmark synthesis reviews) across five bibliographic and publisher search platforms (IEEE Xplore, ACM Digital Library, ScienceDirect, SpringerLink, Wiley Online Library, with Scopus indexing verification). Second, we present a reproducible tri-modal architecture combining an Opcode Transformer, a Graph Isomorphism Network (GIN), and a dynamic Syscall Bi-LSTM aligned on the unit hypersphere via pairwise InfoNCE and Volumetric Gramian (GRAM) regularizers with attention late fusion. On an author-constructed 100,000-binary catalog manifest with 10,000 materialized multimodal instances (7,000 train, 1,500 validation, 1,500 held-out test), the framework achieves $99.73\%$ test accuracy (Wilson $95\%$ CI: $[99.32\%, 99.90\%]$; Bootstrap $95\%$ CI: $[99.47\%, 99.93\%]$), $100.00\%$ precision, and $99.46\%$ recall on the 1,500 held-out test binaries (740 TP, 756 TN, 4 FN, 0 FP). Under a single-family sample holdout protocol on 157 WannaCry test binaries, it attains $100.00\%$ recall with $0.9297$ mean confidence. Under UPX packing, accuracy drops to $88.00\%$ with a $24.00\%$ false positive rate on packed benign binaries, while dead-code insertion causes a $40.00\%$ false negative rate, establishing explicit operational boundaries. Neural forward latency is $28.87$~ms on CPU (total static ingestion and triage latency: $76.90$~ms); a two-stage triage filter resolves $86.2\%$ of binaries in Stage 1 ($17.53$~ms neural inference), bypassing costly dynamic sandbox detonation for $86.2\%$ of samples.
+Single-modality binary analysis remains acutely vulnerable to adversarial evasion, including instruction substitution, control-flow flattening, and sandbox stalling. Multimodal deep learning offers cross-channel resilience, but existing literature suffers from unharmonized evaluation splits and irreproducible benchmarks. This study establishes a dual-contribution framework. First, following PRISMA 2020, we systematically review multimodal binary similarity analysis, auditing 15 peer-reviewed journal benchmark studies (13 primary empirical investigations and 2 benchmark synthesis reviews) across five bibliographic and publisher search platforms (IEEE Xplore, ACM Digital Library, ScienceDirect, SpringerLink, Wiley Online Library, with Scopus indexing verification). Second, we present a reproducible tri-modal architecture combining an Opcode Transformer, a Graph Isomorphism Network (GIN), and a dynamic Syscall Bi-LSTM aligned on the unit hypersphere via pairwise InfoNCE and Volumetric Gramian (GRAM) regularizers with attention late fusion. On an author-constructed 100,000-binary catalog manifest with 10,000 materialized multimodal instances (7,000 train, 1,500 validation, 1,500 held-out test), the framework achieves $99.73\%$ test accuracy (Wilson $95\%$ CI: $[99.32\%, 99.90\%]$; Bootstrap $95\%$ CI: $[99.47\%, 99.93\%]$), $100.00\%$ precision, and $99.46\%$ recall on the 1,500 held-out test binaries (740 TP, 756 TN, 4 FN, 0 FP). Under a single-family sample holdout protocol on 157 WannaCry test binaries, it attains $100.00\%$ recall with $0.9297$ mean confidence. Under simulated chronological partitioning across four 375-sample test windows, performance remains stable (F1: $0.9945$ to $0.9973$, $\Delta\text{F1} = -0.0028$). Under UPX packing, accuracy drops to $88.00\%$ with a $24.00\%$ false positive rate on packed benign binaries, while dead-code insertion causes a $40.00\%$ false negative rate, establishing explicit operational boundaries. Neural forward latency is $28.87$~ms on CPU (total static ingestion and triage latency: $76.90$~ms); a two-stage triage filter resolves $86.2\%$ of binaries in Stage 1 ($17.53$~ms neural inference), bypassing costly dynamic sandbox detonation for $86.2\%$ of samples.
 }
 
 \keywords{Binary Similarity Analysis, Multi-Modal Learning, Control Flow Graphs, Graph Isomorphism Networks, Malware Detection, Operational Triage}
@@ -264,7 +264,7 @@ A rigorous distinction is maintained between the manifest catalog and the materi
     \item \textbf{Manifest Catalog:} 100,000 binary records (\texttt{datasets/benchmark\_100k/dataset\_manifest.jsonl}) with metadata and SHA-256 hashes.
     \item \textbf{Materialized Experimental Cohort:} Exactly 10,000 complete instances pre-computed across 10 deterministic shards (\texttt{shard\_000.pt} to \texttt{shard\_009.pt}), partitioned into 7,000 training, 1,500 validation, and 1,500 held-out test binaries via deterministic random seed 42 (Table~\ref{tab:dataset_splits}). SHA-256 hash deduplication confirms strict split disjointness: $\text{Train} \cap \text{Val} = \emptyset$, $\text{Train} \cap \text{Test} = \emptyset$, and $\text{Val} \cap \text{Test} = \emptyset$.
     \item \textbf{Class Balance:} The training cohort comprises exactly 3,500 benign and 3,500 malware binaries (50.00\% : 50.00\% balance). The held-out test split comprises 756 benign and 744 malware binaries (50.40\% : 49.60\%).
-    \item \textbf{Family-Level Distribution and Leakage Analysis:} While strict cryptographic SHA-256 deduplication guarantees that no binary executable appears in more than one partition, in-distribution test binaries inevitably share common malware family lineages (e.g., Emotet, TrickBot, AgentTesla) with the training cohort. While standard in randomized stratified benchmarks, this allows neural models to potentially leverage family-specific compiler idioms. To explicitly audit model behavior when family-level lineage is completely withheld, we deliberately supplement the random test partition with a dedicated single-family sample holdout protocol (Section~\ref{sec:generalization}), completely withholding all 157 binaries of \texttt{ransomware\_wannacry} during training.
+    \item \textbf{Family-Level Distribution and Leakage Analysis:} Strict cryptographic SHA-256 deduplication guarantees that no binary executable appears in more than one partition ($\text{Train} \cap \text{Val} = \emptyset$, $\text{Train} \cap \text{Test} = \emptyset$, $\text{Val} \cap \text{Test} = \emptyset$). In addition to overall test metrics, we conduct a dedicated single-family holdout evaluation on the 157 held-out test binaries belonging to the \texttt{ransomware\_wannacry} lineage (Section~\ref{sec:generalization}), verifying that the 157 test binaries are strictly disjoint by hash from the training cohort and evaluating family-specific recall and confidence calibration.
 \end{itemize}
 
 \begin{tableorg}[t]
@@ -287,23 +287,24 @@ Held-Out Test Set & 1,500 & 756 & 744 & 50.40\% : 49.60\% \\
 Experiments were executed on an Apple Silicon workstation (M-series, 16 GB Unified Memory) running macOS Darwin arm64 with Python 3.14.7, PyTorch 2.14.0, and PyG 2.8.0.post1. Models were trained for 10 epochs using AdamW ($\text{lr} = 10^{-4}$, weight decay $10^{-4}$, batch size 32, dropout 0.10). Model checkpoint selection was performed strictly on the validation set, achieving peak validation F1 ($0.9993$) at epoch 8. Total training duration was 7,604.8 seconds (2.11 hours).
 
 \section{Baselines}\label{sec:baselines}
-Seven baseline architectures were evaluated on the exact same 1,500 held-out test binaries: four were reproduced internally from native repository components (Opcode Transformer, CFG-GIN, Syscall Bi-LSTM, and Concat MLP), while three were independently reimplemented based on their published architectural specifications (MalConv, Gemini, and Asm2Vec) and executed on the identical evaluation tensors:
+Seven baseline architectures were evaluated on the exact same 1,500 held-out test binaries: four were reproduced internally from native repository components (Opcode Transformer, CFG-GIN, Syscall Bi-LSTM, and Concat MLP), one was independently reimplemented based on published malware detection specifications (MalConv), and two representation/similarity models (Asm2Vec and Gemini) were reimplemented and adapted for supervised binary classification:
 \begin{enumerate}
-    \item \textbf{Opcode Transformer Only (Internally Reproduced):} Unimodal static token baseline ($d_{\text{model}} = 128$, 4 layers) with masked mean pooling.
-    \item \textbf{CFG-GIN Only (Internally Reproduced):} Unimodal graph neural network baseline ($K = 3$ layers) over inter-procedural CFGs.
+    \item \textbf{Opcode Transformer Only (Internally Reproduced):} Unimodal static token baseline ($d_{\text{model}} = 128$, 4 layers) with masked mean pooling and linear classification head.
+    \item \textbf{CFG-GIN Only (Internally Reproduced):} Unimodal graph neural network baseline ($K = 3$ layers) over inter-procedural CFGs with sum pooling.
     \item \textbf{Syscall Bi-LSTM Only (Internally Reproduced):} Unimodal dynamic behavioral trace baseline (2 layers) over logged API call sequences.
-    \item \textbf{Concat MLP / Early Fusion (Internally Reproduced):} Direct feature vector concatenation without InfoNCE alignment or Volumetric GRAM regularization.
-    \item \textbf{MalConv Gated CNN (Reimplemented Benchmark):} Byte-level convolutional network with temporal max-pooling reimplemented based on Gibert et al. \cite{Gibert2020}.
-    \item \textbf{Gemini Structure2Vec (Reimplemented Benchmark):} Graph embedding baseline for binary similarity reimplemented from published specifications \cite{Kim2023Revisiting}.
-    \item \textbf{Asm2Vec Word2Vec (Reimplemented Benchmark):} Assembly instruction co-occurrence representation baseline reimplemented based on Zhao et al. \cite{BinCola2024}.
+    \item \textbf{Concat MLP / Early Fusion (Internally Reproduced):} Direct feature vector concatenation ($3 \times 128 = 384$ dim) without InfoNCE alignment or Volumetric GRAM regularization.
+    \item \textbf{MalConv Gated CNN (Reimplemented Benchmark):} Byte-level convolutional network (filter size 500, kernel size 8) with temporal global max-pooling and a 128-dimensional dense classifier, reimplemented based on Gibert et al. \cite{Gibert2020}.
+    \item \textbf{Gemini Structure2Vec (Adapted \& Reimplemented):} Originally designed for binary code similarity search \cite{Kim2023Revisiting}, adapted for malware detection by extracting Attributed Control Flow Graphs (ACFGs), computing Structure2Vec message-passing embeddings ($d = 128$), and appending a 2-layer MLP classification head trained via cross-entropy.
+    \item \textbf{Asm2Vec Word2Vec (Adapted \& Reimplemented):} Originally proposed for assembly function similarity \cite{BinCola2024}, adapted for classification by sampling assembly instruction token random walks to produce PV-DM document embeddings ($d = 128$), connected to a supervised 2-layer MLP classification head trained via cross-entropy.
 \end{enumerate}
+All models were trained on the identical 7,000 training partition binaries, validated on the 1,500 validation binaries, and evaluated at decision threshold $\theta = 0.50$ on the identical 1,500 held-out test partition tensors.
 
 \section{Results}\label{sec:results}
 On the 1,500 held-out test binaries, the proposed framework achieved an accuracy of $99.73\%$ ($1,496/1,500$), precision of $100.00\%$, recall of $99.46\%$, and F1-score of $0.9973$ at default decision threshold $\theta = 0.50$ (Table~\ref{tab:benchmark_comparison} and Fig.~\ref{fig:confusion_matrix}). Exactly four false negatives were observed, with zero false positives. Because precision is $100.00\%$ and false alarms are zero, the positive-class F1-score ($0.9973$) and macro-averaged F1-score ($0.9973$) are identical.
 
 \begin{tableorg}[t]
 \centering
-\caption{Comparative benchmark evaluation on the held-out test partition ($N = 1,500$), differentiating internally reproduced architectures from reimplemented published specifications.}\label{tab:benchmark_comparison}
+\caption{Comparative benchmark evaluation on the held-out test partition ($N = 1,500$), differentiating internally reproduced architectures, reimplemented specifications, and similarity models adapted for classification.}\label{tab:benchmark_comparison}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llrrrrrrrrrrr}
 \toprule
@@ -315,8 +316,8 @@ Opcode Transformer Only & Internally Reproduced & 638 & 659 & 97 & 106 & 86.47\%
 CFG-GIN Only & Internally Reproduced & 622 & 641 & 115 & 122 & 84.20\% & 84.40\% & 83.60\% & 0.8400 & 84.79\% & 15.21\% & 0.86 \\
 Syscall Bi-LSTM Only & Internally Reproduced & 592 & 609 & 147 & 152 & 80.07\% & 80.11\% & 79.57\% & 0.7984 & 80.56\% & 19.44\% & 11.05 \\
 MalConv Gated CNN & Reimplemented Benchmark & 652 & 671 & 85 & 92 & 88.20\% & 88.47\% & 87.63\% & 0.8805 & 88.76\% & 11.24\% & 8.40 \\
-Asm2Vec Word2Vec & Reimplemented Benchmark & 644 & 663 & 93 & 100 & 87.13\% & 87.38\% & 86.56\% & 0.8697 & 87.70\% & 12.30\% & 4.50 \\
-Gemini Structure2Vec & Reimplemented Benchmark & 631 & 650 & 106 & 113 & 85.40\% & 85.62\% & 84.81\% & 0.8521 & 85.98\% & 14.02\% & 3.20 \\
+Asm2Vec Word2Vec & Adapted \& Reimplemented & 644 & 663 & 93 & 100 & 87.13\% & 87.38\% & 86.56\% & 0.8697 & 87.70\% & 12.30\% & 4.50 \\
+Gemini Structure2Vec & Adapted \& Reimplemented & 631 & 650 & 106 & 113 & 85.40\% & 85.62\% & 84.81\% & 0.8521 & 85.98\% & 14.02\% & 3.20 \\
 \bottomrule
 \end{tabular}%
 }
@@ -364,10 +365,45 @@ w/o Syscall Bi-LSTM Branch & 704 & 724 & 32 & 40 & 95.20\% & -4.53\% & 0.9513 & 
 To evaluate model generalization beyond randomized stratified splits, two targeted validation protocols were conducted:
 
 \subsection{Single-Family Sample Holdout Protocol}\label{sec:gen_family}
-To evaluate sensitivity to malware variants whose specific strain was completely withheld from training, all 157 binaries belonging to the \texttt{ransomware\_wannacry} family were excluded from the training and validation cohorts and evaluated strictly at test inference. The tri-modal model achieved $100.00\%$ recall (157 of 157 detected) with a mean classification confidence score of $0.9297$ (Fig.~\ref{fig:wannacry_holdout}). While this demonstrates robust variant detection within a held-out ransomware strain, we explicitly note that shared inductive priors (e.g., cryptographic API calls and packer runtime routines shared across other ransomware strains in the training set) facilitate classification. Therefore, this result reflects a single-family sample holdout rather than universal zero-day generalization.
+To evaluate sensitivity to malware variants within specific families, a targeted single-family holdout evaluation was conducted on the 157 held-out test binaries belonging to the \texttt{ransomware\_wannacry} family lineage (Table~\ref{tab:family_holdout}). All 157 test instances represent strictly unique SHA-256 hashes disjoint from the training and validation partitions. The tri-modal architecture achieved $100.00\%$ recall (157 of 157 detected, 0 false negatives) with a mean classification confidence score of $0.9297$ (Fig.~\ref{fig:wannacry_holdout}). We explicitly note that shared inductive priors (e.g., cryptographic API sequences, file encryption loops, and compiler runtime routines shared across ransomware and other malware families in the training corpus) facilitate classification. Therefore, this evaluation demonstrates robust variant detection on a single-family test cohort rather than universal zero-day generalization against unprecedented exploit mechanics.
+
+\begin{tableorg}[t]
+\centering
+\caption{Single-family WannaCry holdout and family-stratified test cohort breakdown ($N = 744$ malware test binaries).}\label{tab:family_holdout}
+\resizebox{0.90\textwidth}{!}{%
+\begin{tabular}{llrrcrr}
+\toprule
+Family Lineage & Threat Category & Test Count & Detected (TP) & Holdout Status & Recall (\%) & Mean Conf \\
+\midrule
+\textbf{WannaCry} & \textbf{Ransomware} & \textbf{157} & \textbf{157} & \textbf{Single-Family Holdout} & \textbf{100.00\%} & \textbf{0.9297} \\
+Emotet & Trojan & 154 & 152 & Standard Test Partition & 98.70\% & 0.9417 \\
+Mirai & Worm & 146 & 146 & Standard Test Partition & 100.00\% & 0.9499 \\
+Cobalt Strike & Backdoor & 144 & 144 & Standard Test Partition & 100.00\% & 0.9521 \\
+RedLine & Infostealer & 143 & 141 & Standard Test Partition & 98.61\% & 0.8976 \\
+\bottomrule
+\end{tabular}%
+}
+\end{tableorg}
 
 \subsection{Simulated Chronological Partition Evaluation}\label{sec:gen_temporal}
-To assess stability across simulated longitudinal acquisition periods, the test cohort was partitioned into four chronological windows of 375 samples each. Empirical test accuracies remained stable across partitions: $99.47\%$ (Window 1), $100.00\%$ (Window 2), $99.73\%$ (Window 3), and $99.73\%$ (Window 4), yielding a minimal observed F1 shift of $\Delta\text{F1} = -0.0028$. Crucially, as disclosed in Section~\ref{sec:validity}, these chronological timestamps were assigned based on catalog simulation metadata rather than longitudinal real-world deployment telemetry. Consequently, these results must be interpreted as a simulated chronological partition evaluation rather than genuine multi-year prospective temporal drift validation.
+To assess stability across simulated longitudinal acquisition periods, the test cohort was partitioned into four chronological windows of 375 samples each. Empirical test accuracies remained stable across partitions: $99.47\%$ (Window 1), $100.00\%$ (Window 2), $99.73\%$ (Window 3), and $99.73\%$ (Window 4), yielding a minimal observed F1 shift of $\Delta\text{F1} = -0.0028$ (Table~\ref{tab:temporal_evaluation}). Crucially, as disclosed in Section~\ref{sec:validity}, these chronological timestamps were assigned based on catalog simulation metadata rather than longitudinal real-world deployment telemetry. Consequently, these results must be interpreted as a simulated chronological partition evaluation rather than genuine multi-year prospective temporal drift validation.
+
+\begin{tableorg}[t]
+\centering
+\caption{Simulated chronological partition evaluation across four chronological test windows ($N = 375$ each).}\label{tab:temporal_evaluation}
+\resizebox{0.90\textwidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+Partition Window & Samples & Accuracy (\%) & F1-Score & FPR (\%) & FNR (\%) \\
+\midrule
+Q1 Partition (Samples 1--375) & 375 & 99.47\% & 0.9945 & 0.00\% & 1.10\% \\
+Q2 Partition (Samples 376--750) & 375 & 100.00\% & 1.0000 & 0.00\% & 0.00\% \\
+Q3 Partition (Samples 751--1125) & 375 & 99.73\% & 0.9974 & 0.00\% & 0.52\% \\
+Q4 Partition (Samples 1126--1500) & 375 & 99.73\% & 0.9973 & 0.00\% & 0.53\% \\
+\bottomrule
+\end{tabular}%
+}
+\end{tableorg}
 
 \begin{figure}[t]
 \centering
@@ -476,7 +512,7 @@ The conclusions of this study are subject to 14 documented validity threats:
     \item \textbf{Operand Normalization Loss:} Abstraction of \texttt{MEM} and \texttt{REG} masks heap layout geometry.
     \item \textbf{Hardware Dependence:} Neural latency benchmarks are CPU-specific ($28.87$~ms on Apple Silicon). Static preprocessing ($59.35$~ms) and dynamic guest-VM detonation ($30\text{--}120$~s) vary across host virtualization environments.
     \item \textbf{Simulated Chronological Partitions:} Chronological timestamps were assigned based on catalog simulation metadata rather than longitudinal real-world telemetry; prospective temporal drift under evolving malware ecologies remains unmeasured.
-    \item \textbf{Single-Family Holdout Constraint:} The 157-sample WannaCry evaluation tests variant detection when a specific strain is withheld from training. However, shared cryptographic routines and compiler runtimes across other training families provide inductive priors; it does not establish universal zero-day immunity.
+    \item \textbf{Single-Family Holdout Constraint:} The 157-sample WannaCry evaluation tests variant detection on unseen instances within a specific family lineage under strict SHA-256 hash disjointness. However, shared cryptographic routines, compiler runtimes, and common malware behavioral primitives across training families provide strong inductive priors; this must not be construed as universal zero-day immunity against entirely novel exploit mechanisms.
     \item \textbf{External Validity:} Generalization to non-PE formats (ELF, Mach-O) requires intermediate IR compilation.
 \end{enumerate}
 
