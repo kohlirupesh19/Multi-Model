@@ -1,0 +1,5 @@
+Partition,Total Samples,Benign Samples,Malware Samples,Ratio
+Training Partition,7000,3500,3500,50.0% : 50.0%
+Validation Partition,1500,750,750,50.0% : 50.0%
+Held-Out Test Partition,1500,756,744,50.4% : 49.6%
+Total Materialized Cohort,10000,5006,4994,50.06% : 49.94%

@@ -1,0 +1,6 @@
+condition,accuracy,f1,precision,recall,fpr,fnr,alpha_op,alpha_cfg,alpha_sys,failure_mode
+Clean Baseline,1.0,1.0,1.0,1.0,0.0,0.0,0.606,0.173,0.221,Nominal unperturbed
+UPX Packing,0.88,0.8929,0.8065,1.0,0.24,0.0,0.389,0.267,0.343,24% Benign FPR (compression entropy > 7.2 bits/byte)
+Dead-Code Insertion,0.8,0.75,1.0,0.6,0.0,0.4,0.528,0.206,0.267,40% Malware FNR (sequence flooding displaces prologue opcodes)
+CFG Flattening,0.96,0.9583,1.0,0.92,0.0,0.08,0.616,0.166,0.219,Resilient; attention reweights to instruction and trace
+Sandbox Stalling,0.98,0.9796,1.0,0.96,0.0,0.04,0.79,0.21,0.0,Resilient; static triage compensates for dynamic trace truncation

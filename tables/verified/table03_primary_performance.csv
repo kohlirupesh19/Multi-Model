@@ -1,0 +1,2 @@
+test_samples,tp,tn,fp,fn,accuracy,precision,recall,f1_score,specificity,fpr,fnr,roc_auc,pr_auc,wilson_95_ci_accuracy,bootstrap_95_ci_accuracy,bootstrap_95_ci_f1
+1500,740,756,0,4,0.997333,1.0,0.994624,0.997305,1.0,0.0,0.005376,1.0,1.0,"[0.9932, 0.999]","[0.9947, 0.9993]","[0.9946, 0.9993]"
