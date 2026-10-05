@@ -22,8 +22,8 @@
 | **ISSUE-08** | Irrelevant references [24]–[26] | Minor | 8 | **CLOSED — VERIFIED** | `audit/ISSUE-08_VERIFICATION.md` |
 | **ISSUE-09** | "Q1 Journal" incorrectly appearing as the venue of the current study | Minor | 9 | **CLOSED — VERIFIED** | `audit/ISSUE-09_VERIFICATION.md` |
 | **ISSUE-10** | Baseline classification/reproduction terminology | Major | 10 | **CLOSED — VERIFIED** | `audit/ISSUE-10_VERIFICATION.md` |
-| **ISSUE-11** | Temporal evaluation terminology | Critical | 11 | **UNDER AUDIT** | `audit/ISSUE-11_VERIFICATION.md` |
-| **ISSUE-12** | WannaCry/family-holdout claim scope | Major | 12 | QUEUED | `audit/ISSUE-12_VERIFICATION.md` |
+| **ISSUE-11** | Temporal evaluation terminology | Critical | 11 | **CLOSED — VERIFIED** | `audit/ISSUE-11_VERIFICATION.md` |
+| **ISSUE-12** | WannaCry/family-holdout claim scope | Major | 12 | **UNDER AUDIT** | `audit/ISSUE-12_VERIFICATION.md` |
 | **ISSUE-13** | Production-deployment claim strength | Major | 13 | QUEUED | `audit/ISSUE-13_VERIFICATION.md` |
 | **ISSUE-14** | Latency terminology and end-to-end scope | Critical | 14 | QUEUED | `audit/ISSUE-14_VERIFICATION.md` |
 | **ISSUE-15** | Data availability wording | Major | 15 | QUEUED | `audit/ISSUE-15_VERIFICATION.md` |
