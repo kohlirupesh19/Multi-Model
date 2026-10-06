@@ -1,0 +1,21 @@
+{
+  "protocol": "generator_seed_disjoint_evaluation",
+  "sample_count": 1500,
+  "indices_range": [
+    50000,
+    51499
+  ],
+  "seed_overlap": 0,
+  "calendar_day_overlap": 0,
+  "test_contamination": 0,
+  "tp": 740,
+  "tn": 750,
+  "fp": 0,
+  "fn": 10,
+  "accuracy": 0.9933333333333333,
+  "macro_f1": 0.9933330370238678,
+  "precision": 1.0,
+  "recall": 0.9866666666666667,
+  "specificity": 1.0,
+  "roc_auc": 1.0
+}

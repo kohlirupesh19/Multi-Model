@@ -1,223 +1,184 @@
-# Tri-Modal Contrastive Binary Analysis: Systematic Review and Reproducible Benchmark
+# Geometric Multimodal Representation Learning with Availability-Aware Fusion for Executable Program Analysis
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Framework: PyTorch](https://img.shields.io/badge/PyTorch-2.2+-ee4c2c.svg)](https://pytorch.org/)
-[![PyG](https://img.shields.io/badge/PyG-2.5+-3C2179.svg)](https://pyg.org/)
-[![Tests: 40/40 Passing](https://img.shields.io/badge/tests-40%2F40%20passing-brightgreen.svg)](tests/)
-[![Springer Nature](https://img.shields.io/badge/Springer-sn--jnl-blueviolet.svg)](Research%20Paper/revised_manuscript/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Framework: PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+[![Tests Passing](https://img.shields.io/badge/tests-74%2F74%20passing-brightgreen.svg)](multimodal_malware/tests/)
+[![Journal: JCMM](https://img.shields.io/badge/Journal-JCMM-indigo.svg)](https://jcmm.org/)
 
-Official open-source repository and reproducibility benchmark for the scientific manuscript:  
-**"Tri-Modal Contrastive Binary Analysis via Opcode Transformers, Control Flow Graph Isomorphism Networks, and System Call Embeddings: A Systematic Review and Reproducible Benchmark"**
-
----
-
-## 🧭 Reviewer Quick Navigation Guide
-
-For peer reviewers and editors auditing the revised manuscript, all primary artifacts, verification spreadsheets, and audit trails are structured in dedicated directories:
-
-| Deliverable | Location | Description |
-| :--- | :--- | :--- |
-| 📄 **Final Revised Manuscript (PDF)** | [`Research Paper/FINAL_REVISED_MANUSCRIPT.pdf`](Research%20Paper/FINAL_REVISED_MANUSCRIPT.pdf) | Official 27-page compiled Springer Nature PDF with all 14 figures and 10 tables. |
-| 📝 **Point-by-Point Response** | [`Research Paper/POINT_BY_POINT_REVIEWER_RESPONSE.docx`](Research%20Paper/POINT_BY_POINT_REVIEWER_RESPONSE.docx) | Comprehensive point-by-point response letter addressing all reviewer comments. |
-| 📊 **Master Verification Workbook** | [`Research Paper/verification_excel/MASTER_VERIFICATION_AUDIT.xlsx`](Research%20Paper/verification_excel/MASTER_VERIFICATION_AUDIT.xlsx) | Cell-by-cell claim provenance, compliance matrix, and raw metric reconciliation. |
-| 📑 **LaTeX Source Code** | [`Research Paper/revised_manuscript/sn-article.tex`](Research%20Paper/revised_manuscript/sn-article.tex) | Complete TeX source, bibliography (`sn-bibliography.bib`), and template classes. |
-| 🧪 **Single Source of Truth Results** | [`Research Paper/FINAL_RESULTS.csv`](Research%20Paper/FINAL_RESULTS.csv) | Verified canonical benchmark metrics across all 22 experimental configurations. |
-| 📈 **Analytical Figures (PDF/PNG)** | [`analysis/figures/output/`](analysis/figures/output/) | Publication-quality 300-DPI PNG and vector PDF figures generated from raw logs. |
+Official open-source research repository and reproducibility artifacts for the manuscript:  
+**"Geometric Multimodal Representation Learning with Availability-Aware Fusion for Executable Program Analysis"**  
+*Journal of Computers, Mechanical and Management (JCMM)*
 
 ---
 
-## ⚡ 1-Click Verification & Reproduction Commands
+## 🎯 Research Objective
 
-All benchmark results can be reproduced directly on a standard CPU/workstation without external cluster dependencies:
+Automated binary triage in enterprise security operations requires fast, reliable discrimination between benign software and adversarial payloads. While disassembled opcode mnemonic sequences, control-flow graphs (CFGs), and dynamic API execution traces offer complementary behavioral views, integrating these heterogeneous streams faces three fundamental obstacles:
+1. **Hyperspherical Modality Gaps:** High-dimensional discrepancy and representation drift between sequential and graph-structured modalities.
+2. **Multi-View Geometric Collapse:** Independent pairwise contrastive objectives (e.g., standard InfoNCE) leave the joint volume spanned by all three modalities unregularized.
+3. **Telemetry Dropout & Modality Scarcity:** Dynamic sandbox detonation frequently times out, crashes, or is bypassed by anti-analysis evasion, resulting in missing execution streams.
 
-### 1. Independent Metric Verification (Phase 6 Audit)
-Loads the model checkpoint and held-out test split, computes forward predictions on all 1,500 test samples, and recalculates Wilson score and bootstrap confidence intervals:
-```bash
-python INDEPENDENT_METRIC_VERIFICATION.py
-```
-*Expected output: Accuracy = 99.7333%, Precision = 100.00%, Recall = 99.4624%, F1 = 0.9973, WannaCry Recall = 100.0%.*
-
-### 2. Execute Automated Integrity Test Suite (40 Tests)
-Runs the complete test suite verifying mathematical consistency, split disjointness, confusion matrix arithmetic, and sensitivity sweeps:
-```bash
-pytest tests/
-```
-*Status: All 40 unit and integration tests pass cleanly in under 5 seconds.*
-
-### 3. Recompile the Springer Manuscript
-Compiles the master LaTeX document into publication-ready PDF:
-```bash
-tectonic "Research Paper/revised_manuscript/sn-article.tex"
-```
-
-### 4. Regenerate Publication Figures
-Regenerates all 11 active manuscript figures into vector PDF and 300-DPI PNG formats:
-```bash
-python -m analysis.figures.generate_all_figures
-```
-
-### 5. Launch Interactive Streamlit Research Dashboard
-Launches the interactive research platform with model inspection, live inference, and similarity search:
-```bash
-streamlit run app.py
-```
-Open `http://localhost:8501` in your browser.
+This framework introduces an end-to-end tri-modal representation learning architecture coupled with:
+- **Volumetric Gramian Representation Alignment Measure (GRAM):** Minimizes the 3-dimensional parallelotope volume $\det(G^+)$ of positive triplets while repelling mismatched triplets via $-\lambda_{\text{sep}} \log(1 + \det G^-)$ to enforce collinear consensus on $\mathbb{S}^{127}$.
+- **Availability-Aware Dynamic Attention Gating:** Mathematically clamps attention weights on absent or corrupted telemetry channels ($\alpha_m \to 0$ via extreme negative logit biasing), routing 100% of decision weight across surviving static streams.
 
 ---
 
-## 📊 Verified Empirical Benchmark Summary
+## 🏗️ Repository Architecture
 
-The proposed tri-modal framework combines an **Opcode Transformer**, a **Control Flow Graph Isomorphism Network (GIN)**, and a **Dynamic Syscall Bi-LSTM** aligned via multi-channel **InfoNCE** and **Volumetric Gramian (GRAM)** regularization with adaptive attention fusion.
-
-| Metric | Verified Empirical Value | Verification Ground Truth |
-| :--- | :--- | :--- |
-| **Test Accuracy** | **99.73%** (1,496 / 1,500 samples) | Wilson 95% CI: $[99.32\%, 99.90\%]$; Bootstrap CI: $[99.47\%, 99.93\%]$ |
-| **Precision** | **100.00%** (0 False Positives) | Specificity = $100.0\%$ (756 / 756 Benign) |
-| **Recall (Sensitivity)** | **99.46%** (4 False Negatives) | Sensitivity = $99.46\%$ (740 / 744 Malware) |
-| **Macro F1-Score** | **0.9973** | Non-overlapping CIs vs. all baseline models ($\le 0.9120$) |
-| **ROC-AUC / PR-AUC** | **1.000 / 0.9997** | Area under ROC and Precision-Recall curves |
-| **Zero-Day WannaCry Holdout** | **100.0% Detection** (157 / 157 samples) | Mean prediction confidence = $0.9297$; 0 False Negatives |
-| **UPX Obfuscation Robustness** | **88.0% Accuracy** (FPR = 24.0%) | Attention dynamically shifts to syscalls ($\alpha_{\text{sys}} = 0.343$) |
-| **Full Forward Latency** | **28.87 ms** (CPU Architecture) | Opcode: 16.44 ms; GIN: 0.86 ms; Syscall: 11.05 ms; Fusion: 0.09 ms |
-| **Fast Static Triage Latency** | **17.53 ms** (57.0 samples/sec) | **86.2%** of binaries resolved statically; avoids sandbox queue delays |
-| **Total Neural Parameters** | **994,178 parameters** | Fast Static Triage sub-network: 778,370 parameters |
-
----
-
-## 📁 Repository Directory Architecture
-
-```text
+```
 Multi-Model/
-├── INDEPENDENT_METRIC_VERIFICATION.py  # 1-click authoritative metric verification CLI
-├── app.py                              # Interactive Streamlit dashboard entry point
-├── pages/                              # Streamlit analytical modules and inspection views
-├── README.md                           # Master repository guide and reviewer roadmap
-├── requirements.txt                    # Python runtime package dependencies
-├── environment.yml                     # Conda virtual environment specification
-├── pytest.ini                          # Automated test discovery and warning filters
-│
-├── Research Paper/                     # Scientific manuscript and reviewer audit packages
-│   ├── FINAL_REVISED_MANUSCRIPT.pdf    # Official compiled Springer submission PDF (27 pages)
-│   ├── FINAL_REVISED_MANUSCRIPT.docx   # Formatted Word document for editorial workflows
-│   ├── POINT_BY_POINT_REVIEWER_RESPONSE.docx # Official point-by-point reviewer response
-│   ├── FINAL_RESULTS.csv               # Single source of truth benchmark results (22 experiments)
-│   ├── revised_manuscript/             # Springer Nature LaTeX sources, bibtex, and figures
-│   │   ├── sn-article.tex              # Master LaTeX manuscript source file
-│   │   ├── sn-bibliography.bib         # Verified bibliography (31 peer-reviewed citations)
-│   │   ├── sn-jnl.cls                  # Official Springer Nature document class
-│   │   └── figures/                    # 14 publication figures embedded in manuscript
-│   ├── verification_excel/             # Official audit workbooks for reviewer inspection
-│   │   ├── MASTER_VERIFICATION_AUDIT.xlsx      # Master consolidated audit workbook
-│   │   ├── CLAIM_PROVENANCE_MATRIX.xlsx        # Claim-to-file provenance mapping
-│   │   ├── REVIEWER_COMPLIANCE_MATRIX.xlsx     # Compliance tracking across all comments
-│   │   ├── DATASET_AND_SPLIT_AUDIT.xlsx        # Dataset materialization and partition audit
-│   │   ├── FINAL_RESULTS_BENCHMARK.xlsx        # Authoritative metric verification tables
-│   │   ├── DOI_AND_LITERATURE_AUDIT.xlsx       # PRISMA literature and DOI audits
-│   │   ├── EXPERIMENT_AND_RQ_PROVENANCE.xlsx   # RQ evidence and hypothesis reconciliation
-│   │   └── FINAL_REFERENCE_AUDIT.xlsx          # 100% peer-reviewed citation audit
-│   ├── response_to_reviewers/          # Markdown response letters and generation scripts
-│   ├── audit/                          # Audit scripts, reports, and claim matrices
-│   │   ├── reports/                    # 35 structured audit reports and CSV matrices
-│   │   ├── scripts/                    # Reproducible audit generation scripts
-│   │   └── AUDIT_SPECIFICATION_PROMPT.md # Comprehensive multi-phase audit prompt
-│   └── original_manuscript/            # Pre-revision manuscript archive for comparison
-│
-├── multimodal_malware/                 # Core Python package & neural modules
-│   ├── models/                         # Opcode Transformer, CFG-GIN, Syscall Bi-LSTM, GRAM, Fusion
-│   ├── features/                       # PE/ELF parsing, Capstone disassembly, angr CFG, SQLite cache
-│   ├── training/                       # Dataset loaders, stratified samplers, multi-task trainer
-│   ├── evaluation/                     # Metric calculations, bootstrap CIs, threshold optimization
-│   ├── similarity/                     # Vector similarity index & nearest-neighbor search
-│   ├── sandbox/                        # Instrumented Cuckoo Sandbox trace parsing
-│   ├── configs/                        # Declarative training and evaluation YAML configs
-│   └── scripts/                        # Training, evaluation, and benchmark execution scripts
-│
-├── analysis/                           # Scientific figure generation and Pareto analysis
-│   └── figures/                        # Matplotlib scripts adhering to Springer guidelines
-│       └── output/                     # 11 active manuscript figures (vector PDF & 300-DPI PNG)
-│
-├── checkpoints/                        # Model weights, training logs, and manifests
-│   ├── best_model.pt                   # Optimal trained model checkpoint weights
-│   ├── model_manifest.json             # Model architecture hyperparameters and metadata
-│   └── training_history.json           # Epoch-by-epoch loss convergence and metric history
-│
-├── datasets/                           # Dataset manifests and materialized evaluation shards
-│   ├── benchmark_100k/                 # 100,000 executable binary manifest metadata
-│   ├── benchmark_subset/               # Materialized sample tensors across subfamilies
-│   └── test_split.pt                   # Verified 1,500 held-out test split tensors
-│
-├── results/                            # Raw empirical outputs and evaluation logs
-│   ├── raw_eval_artifacts.npz          # Raw test predictions, labels, and 2D t-SNE embeddings
-│   ├── evaluation_test.json            # Authoritative test metrics and 95% bootstrap CIs
-│   ├── evaluation_family_holdout.json  # 157 WannaCry holdout predictions and recall
-│   ├── evaluation_temporal.json        # Chronological temporal partition evaluation
-│   ├── robustness_results.json         # Adversarial robustness under 4 attack transformations and clean baseline
-│   ├── latency_benchmark.json          # Wall-clock CPU latency decomposition
-│   ├── roc_curves.csv                  # Exact coordinate points for ROC curves
-│   └── pr_curves.csv                   # Exact coordinate points for Precision-Recall curves
-│
-├── configs/                            # Declarative training and evaluation YAML configs
-│   ├── full_multimodal.yaml            # Standard tri-modal architecture config
-│   ├── high_accuracy.yaml              # Evaluated high-accuracy training config
-│   ├── contrastive.yaml                # Pure InfoNCE self-supervised pretraining
-│   ├── lightweight.yaml                # Low-latency evaluated edge configuration
-│   └── scale_100k.yaml                 # 100k distributed sharding configuration
-│
-├── features_cache/                     # Precomputed feature cache & SQLite registry
-│   ├── features_index.sqlite           # SQLite index mapping sample hashes to features
-│   └── tensors/                        # Serialized tensor cache for opcode, CFG, and syscalls
-│
-├── presentation/                       # Project presentation slide deck
-│   └── Multi_Modal_Malware_Analysis_Project_Presentation.pptx # Widescreen presentation deck
-│
-└── tests/                              # Comprehensive automated test suite (40 tests)
-    ├── test_benchmark_integrity.py     # Confusion matrix and metric definition assertions
-    ├── test_figure_integrity.py        # Mathematical reconciliation of figures with raw logs
-    ├── test_dataset_scaling.py         # Sharded dataset collator and splitting checks
-    ├── test_evaluation.py              # Metric calculation and confidence interval tests
-    ├── test_features.py                # Opcode, CFG, and system call extraction unit tests
-    ├── test_models.py                  # PyTorch forward-pass shapes and loss functions
-    └── test_similarity.py              # Vector index retrieval and pairwise comparator tests
+├── analysis/                         # Figure generation and visualization scripts
+│   └── figures/                      # Publication-quality 300-DPI PDF and PNG figure generators
+├── checkpoints/                      # Trained model checkpoints & training history
+│   ├── best_model.pt                 # Audited model checkpoint (537,090 parameters)
+│   ├── latest_model.pt               # Terminal epoch checkpoint
+│   ├── model_manifest.json           # Architecture hyperparameter specification
+│   └── training_history.json         # Complete 10-epoch training loss & validation logs
+├── configs/                          # Experiment configuration YAML files
+│   ├── data_generation.yaml          # Synthetic benchmark generation configuration
+│   ├── full_multimodal.yaml          # Full tri-modal architecture parameters
+│   └── lightweight.yaml              # Lightweight CPU configuration
+├── datasets/                         # Benchmark datasets and splits
+│   ├── benchmark_100k/               # 100,000-record catalog manifest and 10 active shards
+│   ├── train_split.pt                # 7,000 nominal training samples
+│   ├── val_split.pt                  # 1,500 validation samples
+│   ├── test_split.pt                 # 1,500 nominal held-out test samples
+│   └── seed_disjoint_test_split.pt   # 1,500 generator-seed-disjoint test samples (unseen seeds)
+├── docs/                             # Detailed technical documentation
+│   └── data_generation.md            # Synthetic benchmark algorithmic specification
+├── multimodal_malware/               # Core Python package
+│   ├── models/                       # Neural encoders (Transformer, GIN, BiLSTM, Fusion, GRAM)
+│   ├── features/                     # Tokenizers & extractors (Opcode, CFG, Syscall, PE metadata)
+│   ├── training/                     # Dataset loaders, loss functions, trainer
+│   ├── evaluation/                   # Latency, robustness, and metric evaluation modules
+│   └── tests/                        # 74 automated pytest regression tests
+├── results/                          # Machine-readable evaluation outputs
+│   ├── verified/                     # Canonical benchmark metrics (JSON & CSV)
+│   ├── raw_eval_artifacts.npz        # Raw logits, true labels, predicted probabilities
+│   ├── robustness_results.json       # 5-condition adversarial perturbation metrics
+│   ├── evaluation_test.json          # Complete nominal test evaluation report
+│   ├── roc_curves.csv                # ROC curve evaluation coordinates
+│   └── pr_curves.csv                 # PR curve evaluation coordinates
+├── scripts/                          # Executable evaluation & reproduction CLI scripts
+│   ├── generate_dataset.py           # Deterministic benchmark generator CLI
+│   ├── run_rf_mcnemar_audit.py       # Random Forest baseline & paired McNemar test
+│   ├── run_modality_ablation_audit.py # Availability masking vs raw zeroing audit
+│   └── independent_metric_verification.py # Independent metric recalculation
+├── reproduce_all.py                  # Master reproduction script
+├── requirements.txt                  # Python dependency specifications
+└── README.md                         # Project documentation
 ```
 
 ---
 
-## 🛠️ Environment Setup & Installation
+## ⚡ Quickstart & Environment Setup
 
-### Option 1: Standard Virtual Environment (Recommended)
+### 1. Requirements & Installation
+Tested on Python 3.10, 3.11, 3.12, 3.13, and 3.14 on macOS and Linux:
 ```bash
-# Clone the repository
 git clone https://github.com/kohlirupesh19/Multi-Model.git
 cd Multi-Model
-
-# Create and activate Python virtual environment
-python3 -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install required dependencies
-pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Option 2: Conda Environment
+### 2. Verify Benchmark Determinism
+Verify that the synthetic generator is strictly deterministic ($O(1)$ index binding):
 ```bash
-conda env create -f environment.yml
-conda activate multimodal_malware
+python scripts/generate_dataset.py --verify-determinism
+```
+*Expected Output:* `✓ Determinism test PASSED: Same index -> Identical hash; Distinct index -> Distinct hash.`
+
+---
+
+## 🔬 1-Click Verification Commands
+
+### 1. Independent Metric Recalculation
+Evaluates the trained checkpoint `checkpoints/best_model.pt` across all 1,500 test samples in `datasets/test_split.pt` and recalculates exact metrics and Wilson score confidence intervals:
+```bash
+python INDEPENDENT_METRIC_VERIFICATION.py
+```
+*Expected Output:*
+- Accuracy: **99.7333%** ($TP = 740, TN = 756, FP = 0, FN = 4$)
+- Precision: **100.00%** (Wilson 95% CI: $[0.9948, 1.0000]$)
+- Recall: **99.4624%** (Wilson 95% CI: $[0.9863, 0.9979]$)
+- Macro-F1: **0.9973** (Wilson 95% CI: $[0.9931, 0.9989]$)
+- ROC-AUC / PR-AUC: **1.0000** / **1.0000**
+
+### 2. Run Automated Regression Test Suite (74 Tests)
+Executes all unit, integration, and mathematical parity tests (including Equation 11 analytical verification):
+```bash
+pytest multimodal_malware/tests/
+```
+*Status: 74/74 tests pass cleanly.*
+
+### 3. Paired McNemar Test Against Random Forest Baseline
+Extracts 11 handcrafted summary statistics, fits Random Forest (100 trees), evaluates on identical 1,500 test instances, and executes McNemar's test:
+```bash
+python scripts/run_rf_mcnemar_audit.py
+```
+*Expected Output:*
+- Random Forest Accuracy: **95.13%**, Macro-F1: **0.9513**
+- Contingency Table: Both Correct = 1,423; RF Correct / Proposed Wrong = 4; RF Wrong / Proposed Correct = 73; Both Wrong = 0
+- McNemar $\chi^2 = 60.0519$, Exact Binomial $p = 1.89 \times 10^{-17} < 0.001$ (Statistically Significant)
+
+### 4. Modality Ablation & Availability Mask Audit
+Evaluates dynamic telemetry dropouts and compares availability-aware masking against raw feature zeroing:
+```bash
+python scripts/run_modality_ablation_audit.py
+```
+
+### 5. Regenerate Publication Figures
+Regenerates all figures programmatically from raw evaluation artifacts:
+```bash
+python -m analysis.figures.generate_robustness_analysis
+python -m analysis.figures.generate_gram_surface_3d
+python -m analysis.figures.generate_latency_breakdown
+python -m analysis.figures.generate_confusion_matrix
 ```
 
 ---
 
-## 📜 Scientific Citation & Authors
+## 📊 Summary of Experimental Findings
 
-If you use this codebase or benchmark in your research, please cite the accompanying publication:
+| Dimension | Primary Metric / Verified Value | Source Artifact |
+| :--- | :--- | :--- |
+| **Nominal Test Cohort** | $N = 1,500$ held-out binaries (756 Benign, 744 Malware) | `datasets/test_split.pt` |
+| **Confusion Matrix** | $TP = 740, \quad TN = 756, \quad FP = 0, \quad FN = 4$ | `results/raw_eval_artifacts.npz` |
+| **Classification Accuracy** | **99.7333%** (Wilson 95% CI: $[99.32\%, 99.90\%]$) | `results/verified/standard_metrics.json` |
+| **Precision & Clean FPR** | Precision: **100.0%**; Clean FPR: **0.00%** (Wilson: $[0.00\%, 0.51\%]$) | `results/verified/standard_metrics.json` |
+| **Recall & Clean FNR** | Recall: **99.4624%**; Clean FNR: **0.5376%** ($4$ FN) | `results/verified/standard_metrics.json` |
+| **Macro F1-Score** | **0.9973** (Wilson 95% CI: $[0.9931, 0.9989]$) | `results/verified/standard_metrics.json` |
+| **ROC-AUC & PR-AUC** | **1.0000** & **1.0000** (Empirical AUC: 0.999995) | `results/roc_curves.csv`, `pr_curves.csv` |
+| **Seed-Disjoint Generalization** | **99.3333%** Accuracy, **99.33%** F1 ($TP=740, TN=750, FN=10, FP=0$) | `results/verified/seed_disjoint_metrics.json` |
+| **Single-Family Holdout** | WannaCry (157 test samples): **100.0% Recall** (Mean Conf: 0.9297) | `results/verified/family_holdout_metrics.json` |
+| **Static Triage Mode ($m_s=0$)** | **99.47%** Accuracy, **99.47%** F1 ($TP=736, TN=756, FN=8, FP=0$) | `results/verified/modality_ablation_comparison.json` |
+| **Neural Forward Latency** | **28.87 ms** on CPU (Throughput: $34.6$ samples/sec) | `results/verified/latency.csv` |
+| **Fast Static Triage Latency** | **17.53 ms** on CPU (Throughput: $57.0$ samples/sec) | `results/verified/latency.csv` |
+| **GRAM Loss Trajectory** | Monotonic decrease from $0.9126$ (Epoch 1) to $-0.0115$ (Epoch 10) | `checkpoints/training_history.json` |
+
+---
+
+## ⚠️ Limitations & Construct Validity Disclosures
+
+1. **Synthetic Feature-Level Benchmark:** Experimental samples are deterministically synthesized to model statistical distributions of PE binaries informed by EMBER, SOREL-20M, and BODMAS literature, rather than physical PE executable files compiled on disk.
+2. **Preprocessing Excluded from Latency:** Reported latencies (28.87 ms full; 17.53 ms static) measure neural forward inference on commodity CPUs and exclude physical PE parsing, disassembly, graph construction, and hypervisor sandbox detonation.
+3. **Simulated vs. Physical Obfuscations:** Evasion evaluations represent in-memory token/edge tensor corruptions rather than binary recompilation via obfuscators (e.g., Tigress, OLLVM).
+
+---
+
+## 📜 Citation
 
 ```bibtex
-@article{Bhabad2026TriModal,
-  author    = {Bhabad, Harish Parshuram and Patel, Atmeshkumar Subhashbhai and Rakhade, Vijay M. and Kohli, Rupesh and Patel, Nandini S.},
-  title     = {Tri-Modal Contrastive Binary Analysis via Opcode Transformers, Control Flow Graph Isomorphism Networks, and System Call Embeddings: A Systematic Review and Reproducible Benchmark},
-  journal   = {Springer Nature Journal of Computer Virology and Hacking Techniques},
+@article{kohli2026geometric,
+  author    = {Kohli, Rupesh and Bhabad, Harish Parshuram},
+  title     = {{Geometric Multimodal Representation Learning with Availability-Aware Fusion for Executable Program Analysis}},
+  journal   = {Journal of Computers, Mechanical and Management},
   year      = {2026},
-  url       = {https://github.com/kohlirupesh19/Multi-Model}
+  volume    = {X},
+  number    = {Y},
+  pages     = {Z},
+  publisher = {Journal of Computers, Mechanical and Management}
 }
 ```

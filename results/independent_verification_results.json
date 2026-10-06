@@ -1,7 +1,7 @@
 {
   "verification_metadata": {
-    "model_checkpoint": "/Volumes/New Storage/Multi-Model/checkpoints/best_model.pt",
-    "test_split_file": "/Volumes/New Storage/Multi-Model/datasets/test_split.pt",
+    "model_checkpoint": "/Volumes/New Storage/Multi-Model-Binary/Multi-Model/checkpoints/best_model.pt",
+    "test_split_file": "/Volumes/New Storage/Multi-Model-Binary/Multi-Model/datasets/test_split.pt",
     "n_samples": 1500,
     "n_malware": 744,
     "n_benign": 756
