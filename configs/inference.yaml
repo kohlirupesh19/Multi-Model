@@ -1,0 +1,13 @@
+# Inference Pipeline Configuration
+checkpoint_path: "checkpoints/best_model.pt"
+device: "cpu"           # Standard CPU deployment for triage
+
+inference:
+  threshold: 0.50
+  batch_size: 1
+  return_attention_weights: true
+  return_latent_embeddings: false
+  triage:
+    static_confidence_high: 0.95
+    static_confidence_low: 0.05
+    sandbox_escalation_enabled: true

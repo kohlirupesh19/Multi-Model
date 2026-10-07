@@ -1,0 +1,10 @@
+{
+  "neural_forward_ms": 28.87,
+  "stage1_static_triage_ms": 17.53,
+  "opcode_transformer_ms": 16.44,
+  "cfg_gin_ms": 0.86,
+  "syscall_bilstm_ms": 11.05,
+  "fusion_classifier_ms": 0.09,
+  "throughput_samples_per_sec": 34.6,
+  "triage_throughput_samples_per_sec": 57.0
+}

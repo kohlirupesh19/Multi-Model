@@ -1,0 +1,77 @@
+# Default Project Configuration for Multi-Modal Malware Analysis
+experiment_name: "multimodal_default"
+seed: 42
+
+hardware:
+  device: "auto"        # "cpu", "cuda", or "mps"
+  precision: "float32"
+  num_workers: 4
+
+dataset:
+  name: "multimodal_benchmark_10k"
+  manifest_path: "datasets/benchmark_100k/dataset_manifest.jsonl"
+  train_split: "datasets/train_split.pt"
+  val_split: "datasets/val_split.pt"
+  test_split: "datasets/test_split.pt"
+  max_samples: 10000
+  stratified_split:
+    train: 7000
+    val: 1500
+    test: 1500
+
+features:
+  opcode:
+    max_length: 2048
+    vocab_size: 4096
+    sampling_mode: "importance"
+  cfg:
+    max_nodes: 1000
+    max_edges: 3000
+    node_feat_dim: 16
+    preserve_hubs: true
+  syscall:
+    max_length: 512
+    canonical_vocab_size: 128
+
+model:
+  latent_dim: 128
+  opcode_encoder:
+    vocab_size: 4096
+    embed_dim: 128
+    hidden_dim: 256
+    num_layers: 2
+    num_heads: 4
+    dropout: 0.10
+  cfg_encoder:
+    in_dim: 16
+    hidden_dim: 128
+    num_layers: 3
+    dropout: 0.10
+  syscall_encoder:
+    vocab_size: 128
+    embed_dim: 64
+    hidden_dim: 128
+    num_layers: 1
+    dropout: 0.10
+  fusion:
+    type: "attention_weighted_late_fusion"
+    projection_dim: 64
+  classifier:
+    num_classes: 2
+    uncertainty_band: [0.40, 0.60]
+
+training:
+  batch_size: 32
+  epochs: 10
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-4
+  tau: 0.07             # InfoNCE temperature
+  gamma: 0.50           # Contrastive loss weight
+  lambda_sep: 0.10      # Volumetric GRAM geometric separation weight
+  patience: 4
+
+evaluation:
+  checkpoint: "checkpoints/best_model.pt"
+  decision_threshold: 0.50
+  confidence_interval_level: 0.95
+  bootstrap_replicates: 1000

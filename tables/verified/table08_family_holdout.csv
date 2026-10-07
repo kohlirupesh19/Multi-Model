@@ -1,0 +1,2 @@
+evaluation_protocol,family_held_out,total_test_samples,tp,fn,recall,mean_confidence,zero_day_claim_status
+single_family_wannacry_holdout,ransomware_wannacry,157,157,0,1.0,0.9297,RESTRICTED_TO_SINGLE_FAMILY_HOLDOUT

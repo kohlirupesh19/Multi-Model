@@ -1,0 +1,10 @@
+{
+  "evaluation_protocol": "single_family_wannacry_holdout",
+  "family_held_out": "ransomware_wannacry",
+  "total_test_samples": 157,
+  "tp": 157,
+  "fn": 0,
+  "recall": 1.0,
+  "mean_confidence": 0.9297,
+  "zero_day_claim_status": "RESTRICTED_TO_SINGLE_FAMILY_HOLDOUT"
+}

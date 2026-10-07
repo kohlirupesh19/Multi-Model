@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 # Directories
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 OUTPUT_DIR = PROJECT_ROOT / "analysis" / "figures" / "output"
-MANUSCRIPT_FIG_DIR = PROJECT_ROOT / "Research Paper" / "revised_manuscript" / "figures"
+MANUSCRIPT_FIG_DIR = PROJECT_ROOT / "results" / "figures"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 MANUSCRIPT_FIG_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -28,7 +28,7 @@ FAMILY_EVAL_JSON = RESULTS_DIR / "evaluation_family_holdout.json"
 ROBUSTNESS_JSON = RESULTS_DIR / "robustness_results.json"
 LATENCY_JSON = RESULTS_DIR / "latency_benchmark.json"
 DATASET_SUMMARY_JSON = PROJECT_ROOT / "datasets" / "benchmark_100k" / "dataset_summary.json"
-FINAL_RESULTS_CSV = PROJECT_ROOT / "Research Paper" / "FINAL_RESULTS.csv"
+FINAL_RESULTS_CSV = RESULTS_DIR / "FINAL_RESULTS.csv"
 
 # Color Palette (Publication-Grade, Grayscale-Differentiable, Colorblind-Friendly)
 COLOR_BENIGN = '#2563eb'     # Royal Blue

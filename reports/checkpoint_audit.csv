@@ -1,0 +1,2 @@
+Checkpoint Path,Architecture,Parameters,File Size (MB),Training Epochs,Peak Val Epoch,Peak Val F1,Optimizer,Learning Rate,Weight Decay,Batch Size,Dropout,Selection Criterion,Compatibility
+checkpoints/best_model.pt,MultiModalMalwareModel,537090,2.15,10,8,0.9993,AdamW,0.0001,0.0001,32,0.1,Max Validation F1,VERIFIED

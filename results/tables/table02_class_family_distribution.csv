@@ -1,0 +1,7 @@
+Threat Category / Family,Type,Materialized Count,Test Count,Holdout Status
+Benign Utility & Diagnostics,Benign,5006,756,Standard
+Ransomware (WannaCry),Malware,1024,157,Single-Family Holdout
+Trojan (Emotet),Malware,1012,154,Standard
+Worm (Mirai),Malware,986,146,Standard
+Backdoor (Cobalt),Malware,982,144,Standard
+Infostealer (RedLine),Malware,990,143,Standard

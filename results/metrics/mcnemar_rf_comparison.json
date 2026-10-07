@@ -1,0 +1,39 @@
+{
+  "dataset": "test_split.pt",
+  "sample_count": 1500,
+  "logistic_regression": {
+    "accuracy": 0.8466666666666667,
+    "macro_f1": 0.8466394025604552,
+    "roc_auc": 0.9264415144791489
+  },
+  "random_forest": {
+    "n_estimators": 100,
+    "accuracy": 0.9513333333333334,
+    "macro_f1": 0.9513037043427757,
+    "precision": 0.9666203059805285,
+    "recall": 0.9341397849462365,
+    "roc_auc": 0.9927444245320589,
+    "tp": 695,
+    "tn": 732,
+    "fp": 24,
+    "fn": 49
+  },
+  "proposed_model": {
+    "accuracy": 0.9973333333333333
+  },
+  "contingency_table": {
+    "both_correct": 1423,
+    "rf_correct_proposed_wrong": 4,
+    "rf_wrong_proposed_correct": 73,
+    "both_wrong": 0
+  },
+  "mcnemar_test": {
+    "discordant_b": 4,
+    "discordant_c": 73,
+    "chi2_statistic": 60.05194805194805,
+    "p_value_asymptotic": 9.2148511043888e-15,
+    "p_value_exact": 1.891833529313699e-17,
+    "alpha": 0.05,
+    "statistically_significant": true
+  }
+}

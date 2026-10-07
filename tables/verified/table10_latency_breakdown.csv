@@ -1,0 +1,8 @@
+pipeline_stage,latency_ms,relative_pct,throughput_sps
+Opcode Transformer Encoder,16.44,56.9,60.8
+CFG-GIN Encoder,0.86,3.0,1162.8
+Syscall Bi-LSTM Encoder,11.05,38.3,90.5
+Fusion Head & Linear Classifier,0.09,0.3,11111.1
+Full Tri-Modal Forward Pass,28.87,100.0,34.6
+Fast Static Triage (Stage 1),17.53,60.7,57.0
+Dynamic Cuckoo Sandbox Execution,60000.0,207828.2,0.017

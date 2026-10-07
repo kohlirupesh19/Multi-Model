@@ -1,0 +1,89 @@
+# Synthetic Multimodal Benchmark Generation Configuration
+# Grounded in literature distributions from EMBER, SOREL-20M, and BODMAS
+
+dataset:
+  name: "Multi-Modal-Malware-Synthetic-Benchmark"
+  total_samples: 100000
+  active_materialized_samples: 10000
+  materialized_shards: 10
+  shard_size: 1000
+  class_balance: 0.50 # Exactly 50% Benign, 50% Malware
+  base_random_seed: 42
+  calendar_start_epoch: 1680000000 # April 2023 base timestamp
+  calendar_period_days: 365
+
+modalities:
+  opcode:
+    vocab_size: 4096
+    max_sequence_length: 1024
+    raw_token_length_range: [80, 250]
+    operand_abstraction: true # <REG>, <MEM>, <IMM>, <ADDR>
+  cfg:
+    max_nodes: 500
+    max_edges: 1500
+    node_feature_dim: 16
+    insns_per_block_range: [3, 10]
+  syscall:
+    vocab_size: 128
+    max_sequence_length: 512
+    dynamic_availability_prob: 0.88 # 12% missing trace rate at generation
+    benign_trace_length_range: [10, 35]
+    malware_trace_length_range: [15, 55]
+
+profiles:
+  benign:
+    - name: "benign_utility"
+      entropy_range: [4.50, 5.90]
+      cfg_blocks: [8, 30]
+      branch_prob: 0.30
+    - name: "benign_crypto_archiver"
+      entropy_range: [6.50, 7.35]
+      cfg_blocks: [22, 55]
+      branch_prob: 0.44
+    - name: "benign_network_client"
+      entropy_range: [5.40, 6.70]
+      cfg_blocks: [18, 48]
+      branch_prob: 0.40
+    - name: "benign_system_diagnostic"
+      entropy_range: [5.60, 6.80]
+      cfg_blocks: [20, 52]
+      branch_prob: 0.46
+    - name: "benign_packed_protector"
+      entropy_range: [7.20, 7.85]
+      cfg_blocks: [15, 45]
+      branch_prob: 0.50
+  malware:
+    - name: "ransomware_wannacry"
+      entropy_range: [7.30, 7.95]
+      cfg_blocks: [24, 60]
+      branch_prob: 0.58
+    - name: "trojan_emotet"
+      entropy_range: [6.90, 7.65]
+      cfg_blocks: [20, 52]
+      branch_prob: 0.52
+    - name: "worm_mirai"
+      entropy_range: [6.50, 7.40]
+      cfg_blocks: [16, 42]
+      branch_prob: 0.46
+    - name: "infostealer_redline"
+      entropy_range: [6.40, 7.25]
+      cfg_blocks: [18, 46]
+      branch_prob: 0.42
+    - name: "backdoor_cobalt"
+      entropy_range: [7.10, 7.82]
+      cfg_blocks: [28, 62]
+      branch_prob: 0.54
+
+partitions:
+  nominal_split:
+    train_ratio: 0.70
+    val_ratio: 0.15
+    test_ratio: 0.15
+    shuffle_seed: 42
+  disjoint_protocols:
+    generator_seed_disjoint:
+      train_indices: [0, 6999]
+      val_indices: [10000, 11499]
+      test_indices: [50000, 51499]
+    family_holdout:
+      held_out_family: "ransomware_wannacry"

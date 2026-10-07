@@ -1,0 +1,12 @@
+Claim ID,Section,Claim,Evidence,Verified Result,Difference,Status,Action
+CLM-01,§10 Dataset,"100,000 catalog manifest vs 10,000 materialized instances across 10 shards",dataset_manifest.jsonl & shard_000.pt to 009.pt,100K catalog / 10K materialized,0,VERIFIED,RETAINED
+CLM-02,§10 Dataset,"7,000 train / 1,500 val / 1,500 test split","train_split.pt, val_split.pt, test_split.pt","7,000 / 1,500 / 1,500",0,VERIFIED,RETAINED
+CLM-03,§13 Results,"Test Accuracy: 99.73% (1,496 / 1,500)","raw_eval_artifacts.npz, test_split.pt","99.7333% (TP=740, TN=756)",0,VERIFIED,RETAINED
+CLM-04,§13 Results,"Test Precision: 100.0%, Clean FPR: 0.00%","raw_eval_artifacts.npz, FP=0","100.0% Prec, 0.0% FPR",0,VERIFIED,RETAINED
+CLM-05,§13 Results,"Test Recall: 99.46% (740 / 744), FN: 4","raw_eval_artifacts.npz, FN=4","99.4624% Rec, 4 FN",0,VERIFIED,RETAINED
+CLM-06,§13 Results,"Wilson 95% CI: [99.32%, 99.90%]",Exact Wilson score binomial calculation,"[0.9932, 0.9990]",0,VERIFIED,RETAINED
+CLM-07,§15 Generalization,WannaCry single-family holdout recall: 100.0% (157 / 157),evaluation_family_holdout.json,100.0% (Mean conf: 0.9297),0,VERIFIED,RETAINED
+CLM-08,§16 Robustness,Disclosed UPX packing benign FPR: 24.0% (120 / 500),robustness_results.json,"24.0% FPR, 88.0% Acc",0,VERIFIED,RETAINED
+CLM-09,§16 Robustness,Disclosed Dead-code insertion malware FNR: 40.0% (200 / 500),robustness_results.json,"40.0% FNR, 80.0% Acc",0,VERIFIED,RETAINED
+CLM-10,§17 Latency,Full neural forward pass: 28.87 ms (CPU),latency_benchmark.json,28.87 ms,0,VERIFIED,RETAINED
+CLM-11,§17 Latency,Fast static triage (Stage 1): 17.53 ms; Sandbox load reduction: 86.2%,"latency_benchmark.json, triage CDF",17.53 ms; 86.2% triage yield,0,VERIFIED,RETAINED

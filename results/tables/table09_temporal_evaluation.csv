@@ -1,0 +1,5 @@
+Window,Accuracy,F1,FPR,FNR,Timestamp Type
+Q1 Partition (Samples 1-375),0.9947,0.9945,0.0,0.01099,Simulated Chronological
+Q2 Partition (Samples 376-750),1.0,1.0,0.0,0.0,Simulated Chronological
+Q3 Partition (Samples 751-1125),0.9973,0.9974,0.0,0.00518,Simulated Chronological
+Q4 Partition (Samples 1126-1500),0.9973,0.9973,0.0,0.00529,Simulated Chronological

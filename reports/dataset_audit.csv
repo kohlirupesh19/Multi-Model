@@ -1,0 +1,6 @@
+Partition,Total Samples,Benign Samples,Malware Samples,Source,Materialized
+Manifest Catalog,100000,50000,50000,dataset_manifest.jsonl,Catalog Reference Only
+Materialized Shards,10000,5006,4994,shard_000.pt to shard_009.pt,Fully Materialized Multimodal Tensors
+Training Partition,7000,3500,3500,train_split.pt (Seed 42),Fully Materialized
+Validation Partition,1500,750,750,val_split.pt (Seed 42),Fully Materialized
+Held-Out Test Partition,1500,756,744,test_split.pt (Seed 42),Fully Materialized (Frozen Split)
