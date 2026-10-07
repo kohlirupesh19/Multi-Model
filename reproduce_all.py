@@ -85,6 +85,14 @@ test_path = REPO_ROOT / 'datasets' / 'test_split.pt'
 train_path = REPO_ROOT / 'datasets' / 'train_split.pt'
 val_path = REPO_ROOT / 'datasets' / 'val_split.pt'
 
+if not train_path.exists() and (REPO_ROOT / 'datasets' / 'train_split.pt.gz').exists():
+    import gzip
+    import shutil
+    print("Decompressing datasets/train_split.pt.gz -> datasets/train_split.pt...")
+    with gzip.open(REPO_ROOT / 'datasets' / 'train_split.pt.gz', 'rb') as f_in:
+        with open(train_path, 'wb') as f_out:
+            shutil.copyfileobj(f_in, f_out)
+
 test_data = torch.load(test_path, map_location='cpu', weights_only=False)
 train_data = torch.load(train_path, map_location='cpu', weights_only=False)
 val_data = torch.load(val_path, map_location='cpu', weights_only=False)

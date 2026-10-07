@@ -17,7 +17,7 @@ datasets/
 │   ├── dataset_summary.json           # Partition summary and family breakdown
 │   └── shards/                        # 10 materialized feature shards (1,000 samples each)
 │       ├── shard_000.pt to shard_009.pt
-├── train_split.pt                     # Deterministic training partition (7,000 samples; 50% benign, 50% malware)
+├── train_split.pt.gz                  # Deterministic training partition (7,000 samples; gzipped; auto-extracted to .pt on load)
 ├── val_split.pt                       # Deterministic validation partition (1,500 samples; 50% benign, 50% malware)
 ├── test_split.pt                      # Nominal held-out test partition (1,500 samples: 756 benign, 744 malware)
 └── seed_disjoint_test_split.pt        # Generator-seed-disjoint OOD partition (1,500 samples)
@@ -29,7 +29,7 @@ datasets/
 |---|---|---|---|
 | **Catalog Manifest** | 100,000 binaries | 50.0% Benign / 50.0% Malware | Corpus indexing and metadata catalog |
 | **Materialized Cohort** | 10,000 binaries | 50.0% Benign / 50.0% Malware | Extracted tri-modal tensor representation across 10 deterministic shards |
-| **Training Split** (`train_split.pt`) | 7,000 binaries | 3,500 Benign / 3,500 Malware | Representation learning & classifier optimization |
+| **Training Split** (`train_split.pt` / `train_split.pt.gz`) | 7,000 binaries | 3,500 Benign / 3,500 Malware | Representation learning & classifier optimization |
 | **Validation Split** (`val_split.pt`) | 1,500 binaries | 750 Benign / 750 Malware | Hyperparameter tuning and checkpoint selection |
 | **Nominal Test Split** (`test_split.pt`) | 1,500 binaries | 756 Benign / 744 Malware | Final unbiased performance assessment |
 | **Seed-Disjoint OOD** (`seed_disjoint_test_split.pt`) | 1,500 binaries | 750 Benign / 750 Malware | Verification against synthetic generator bias |

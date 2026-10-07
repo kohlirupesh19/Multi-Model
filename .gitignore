@@ -67,3 +67,6 @@ Thumbs.db
 *.log
 scratch/
 tmp/
+
+# Large uncompressed datasets (compressed .gz format tracked instead)
+datasets/train_split.pt
