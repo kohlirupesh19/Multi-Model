@@ -1,0 +1,254 @@
+[
+  {
+    "comparison_model": "Syscall Bi-LSTM Only",
+    "category": "Baseline",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.8007,
+    "delta_acc": 0.1967,
+    "contingency_table": {
+      "a_both_correct": 1199,
+      "b_proposed_only": 297,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 289.0836,
+    "p_value_chi2": 7.8746e-65,
+    "p_value_exact_binomial": 8.8071e-86,
+    "cohens_g": 0.4933,
+    "odds_ratio": 148.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.004167,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "CFG-GIN Only",
+    "category": "Baseline",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.842,
+    "delta_acc": 0.1553,
+    "contingency_table": {
+      "a_both_correct": 1261,
+      "b_proposed_only": 235,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 227.1055,
+    "p_value_chi2": 2.5504e-51,
+    "p_value_exact_binomial": 2.5541e-67,
+    "cohens_g": 0.4916,
+    "odds_ratio": 117.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.004545,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "Gemini Structure2Vec",
+    "category": "Baseline",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.854,
+    "delta_acc": 0.1433,
+    "contingency_table": {
+      "a_both_correct": 1279,
+      "b_proposed_only": 217,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 209.1142,
+    "p_value_chi2": 2.1436e-47,
+    "p_value_exact_binomial": 5.7189e-62,
+    "cohens_g": 0.4909,
+    "odds_ratio": 108.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.005,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "Opcode Transformer Only",
+    "category": "Baseline",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.8647,
+    "delta_acc": 0.1327,
+    "contingency_table": {
+      "a_both_correct": 1295,
+      "b_proposed_only": 201,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 193.1232,
+    "p_value_chi2": 6.6167e-44,
+    "p_value_exact_binomial": 3.2215e-57,
+    "cohens_g": 0.4901,
+    "odds_ratio": 100.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.005556,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "Asm2Vec Word2Vec",
+    "category": "Baseline",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.8713,
+    "delta_acc": 0.126,
+    "contingency_table": {
+      "a_both_correct": 1305,
+      "b_proposed_only": 191,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 183.1295,
+    "p_value_chi2": 1.005e-41,
+    "p_value_exact_binomial": 2.9826e-54,
+    "cohens_g": 0.4896,
+    "odds_ratio": 95.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.00625,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "MalConv Gated CNN",
+    "category": "Baseline",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.882,
+    "delta_acc": 0.1153,
+    "contingency_table": {
+      "a_both_correct": 1321,
+      "b_proposed_only": 175,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 167.1412,
+    "p_value_chi2": 3.1159e-38,
+    "p_value_exact_binomial": 1.6448e-49,
+    "cohens_g": 0.4887,
+    "odds_ratio": 87.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.007143,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "w/o Opcode Transformer Branch",
+    "category": "Ablation",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.924,
+    "delta_acc": 0.0733,
+    "contingency_table": {
+      "a_both_correct": 1384,
+      "b_proposed_only": 112,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 104.2193,
+    "p_value_chi2": 1.8112e-24,
+    "p_value_exact_binomial": 6.3132e-31,
+    "cohens_g": 0.4825,
+    "odds_ratio": 56.0,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.008333,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "Concat MLP (Early Fusion)",
+    "category": "Baseline",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.938,
+    "delta_acc": 0.0593,
+    "contingency_table": {
+      "a_both_correct": 1405,
+      "b_proposed_only": 91,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 83.2688,
+    "p_value_chi2": 7.1621e-20,
+    "p_value_exact_binomial": 8.8292e-25,
+    "cohens_g": 0.4785,
+    "odds_ratio": 45.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.01,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "w/o CFG-GIN Branch",
+    "category": "Ablation",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.9407,
+    "delta_acc": 0.0567,
+    "contingency_table": {
+      "a_both_correct": 1409,
+      "b_proposed_only": 87,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 79.2809,
+    "p_value_chi2": 5.3878e-19,
+    "p_value_exact_binomial": 1.2944e-23,
+    "cohens_g": 0.4775,
+    "odds_ratio": 43.5,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.0125,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "w/o Syscall Bi-LSTM Branch",
+    "category": "Ablation",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.952,
+    "delta_acc": 0.0453,
+    "contingency_table": {
+      "a_both_correct": 1426,
+      "b_proposed_only": 70,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 62.3472,
+    "p_value_chi2": 2.8794e-15,
+    "p_value_exact_binomial": 1.1134e-18,
+    "cohens_g": 0.4722,
+    "odds_ratio": 35.0,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.016667,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "w/o InfoNCE Alignment Loss",
+    "category": "Ablation",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.96,
+    "delta_acc": 0.0373,
+    "contingency_table": {
+      "a_both_correct": 1438,
+      "b_proposed_only": 58,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 50.4167,
+    "p_value_chi2": 1.2433e-12,
+    "p_value_exact_binomial": 3.1763e-15,
+    "cohens_g": 0.4667,
+    "odds_ratio": 29.0,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.025,
+    "retains_significance": true
+  },
+  {
+    "comparison_model": "w/o Volumetric GRAM Regularizer",
+    "category": "Ablation",
+    "proposed_acc": 0.9973,
+    "comparison_acc": 0.968,
+    "delta_acc": 0.0293,
+    "contingency_table": {
+      "a_both_correct": 1450,
+      "b_proposed_only": 46,
+      "c_comparison_only": 2,
+      "d_both_incorrect": 2
+    },
+    "mcnemar_chi2": 38.5208,
+    "p_value_chi2": 5.4172e-10,
+    "p_value_exact_binomial": 8.3631e-12,
+    "cohens_g": 0.4583,
+    "odds_ratio": 23.0,
+    "statistical_significance": "p < 0.001 (Highly Significant)",
+    "holm_bonferroni_threshold": 0.05,
+    "retains_significance": true
+  }
+]

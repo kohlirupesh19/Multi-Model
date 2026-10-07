@@ -1,8 +1,0 @@
-{
-  "family": "ransomware_wannacry",
-  "total_test_samples": 157,
-  "tp": 157,
-  "fn": 0,
-  "recall": 1.0,
-  "mean_confidence": 0.9297
-}

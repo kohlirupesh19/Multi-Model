@@ -1,0 +1,25 @@
+# Evaluation Pipeline Configuration
+experiment_name: "multimodal_evaluation"
+checkpoint_path: "checkpoints/best_model.pt"
+
+data:
+  test_split: "datasets/test_split.pt"
+  seed_disjoint_test_split: "datasets/seed_disjoint_test_split.pt"
+  family_holdout_split: "results/evaluation_family_holdout.json"
+
+metrics:
+  threshold: 0.50
+  confidence_interval_level: 0.95
+  n_bootstraps: 1000
+
+evaluations:
+  nominal_test: true
+  temporal_drift: true
+  family_holdout: true
+  robustness_stress_test: true
+  latency_benchmark: true
+
+output:
+  results_dir: "results"
+  save_raw_artifacts: true
+  raw_artifacts_file: "results/raw_eval_artifacts.npz"

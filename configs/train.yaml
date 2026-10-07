@@ -1,0 +1,31 @@
+# Training Pipeline Configuration
+experiment_name: "multimodal_train_tri_modal"
+seed: 42
+
+hardware:
+  device: "auto"
+  precision: "float32"
+  num_workers: 4
+
+dataset:
+  train_split: "datasets/train_split.pt"
+  val_split: "datasets/val_split.pt"
+  batch_size: 32
+
+optimizer:
+  type: "AdamW"
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  scheduler: "ReduceLROnPlateau"
+  scheduler_patience: 2
+
+loss_weights:
+  tau: 0.07             # InfoNCE temperature
+  gamma: 0.50           # InfoNCE loss weight
+  lambda_sep: 0.10      # Volumetric GRAM geometric separation weight
+
+epochs: 10
+early_stopping_patience: 4
+checkpoint_dir: "checkpoints"
+save_best: true
+log_interval: 10

@@ -17,17 +17,17 @@ import torch
 import numpy as np
 import pandas as pd
 
-REPO_ROOT = Path('/Volumes/New Storage/Multi-Model').resolve()
-WS_ROOT = Path('/Volumes/New Storage/Artificial Intellgence Review').resolve()
+REPO_ROOT = Path(__file__).resolve().parent
+WS_ROOT = REPO_ROOT
 
-# Target directories in both Multi-Model and Workspace
-for base in [REPO_ROOT, WS_ROOT]:
-    (base / 'results' / 'verified').mkdir(parents=True, exist_ok=True)
-    (base / 'results' / 'raw').mkdir(parents=True, exist_ok=True)
-    (base / 'tables' / 'verified').mkdir(parents=True, exist_ok=True)
-    (base / 'figures' / 'verified').mkdir(parents=True, exist_ok=True)
-    (base / 'reports').mkdir(parents=True, exist_ok=True)
-    (base / 'manuscript' / 'revised').mkdir(parents=True, exist_ok=True)
+# Target directories in repository
+(REPO_ROOT / 'results' / 'verified').mkdir(parents=True, exist_ok=True)
+(REPO_ROOT / 'results' / 'raw').mkdir(parents=True, exist_ok=True)
+(REPO_ROOT / 'results' / 'tables').mkdir(parents=True, exist_ok=True)
+(REPO_ROOT / 'results' / 'figures').mkdir(parents=True, exist_ok=True)
+(REPO_ROOT / 'tables' / 'verified').mkdir(parents=True, exist_ok=True)
+(REPO_ROOT / 'figures' / 'verified').mkdir(parents=True, exist_ok=True)
+(REPO_ROOT / 'reports').mkdir(parents=True, exist_ok=True)
 
 print("=" * 80)
 print("MASTER REPRODUCIBILITY PIPELINE: ADAPTIVE TRI-MODAL MALWARE DETECTION")
@@ -311,7 +311,7 @@ t2 = pd.DataFrame([
 
 t3 = pd.DataFrame([metrics_payload])
 
-final_csv = REPO_ROOT / 'Research Paper' / 'FINAL_RESULTS.csv'
+final_csv = REPO_ROOT / 'results' / 'FINAL_RESULTS.csv'
 df_final = pd.read_csv(final_csv)
 t4 = df_final[df_final['experiment_id'].str.contains('BASELINE|PROPOSED-TEST')].copy()
 def classify_baseline(m):
@@ -349,34 +349,30 @@ t11 = pd.DataFrame([
     {"Module": "Complete Tri-Modal Detector", "Parameters": 537090, "Memory (MB)": 2.15, "FLOPs": "NOT MEASURED"}
 ])
 
-for base in [REPO_ROOT, WS_ROOT]:
-    t1.to_csv(base / 'tables' / 'verified' / 'table01_dataset_composition.csv', index=False)
-    t2.to_csv(base / 'tables' / 'verified' / 'table02_class_family_distribution.csv', index=False)
-    t3.to_csv(base / 'tables' / 'verified' / 'table03_primary_performance.csv', index=False)
-    t4.to_csv(base / 'tables' / 'verified' / 'table04_baseline_comparison.csv', index=False)
-    t5.to_csv(base / 'tables' / 'verified' / 'table05_component_ablation.csv', index=False)
-    t6.to_csv(base / 'tables' / 'verified' / 'table06_modality_ablation.csv', index=False)
-    t7.to_csv(base / 'tables' / 'verified' / 'table07_robustness.csv', index=False)
-    t8.to_csv(base / 'tables' / 'verified' / 'table08_family_holdout.csv', index=False)
-    t9.to_csv(base / 'tables' / 'verified' / 'table09_temporal_evaluation.csv', index=False)
-    t10.to_csv(base / 'tables' / 'verified' / 'table10_latency_breakdown.csv', index=False)
-    t11.to_csv(base / 'tables' / 'verified' / 'table11_model_complexity.csv', index=False)
+for target_dir in [REPO_ROOT / 'tables' / 'verified', REPO_ROOT / 'results' / 'tables']:
+    target_dir.mkdir(parents=True, exist_ok=True)
+    t1.to_csv(target_dir / 'table01_dataset_composition.csv', index=False)
+    t2.to_csv(target_dir / 'table02_class_family_distribution.csv', index=False)
+    t3.to_csv(target_dir / 'table03_primary_performance.csv', index=False)
+    t4.to_csv(target_dir / 'table04_baseline_comparison.csv', index=False)
+    t5.to_csv(target_dir / 'table05_component_ablation.csv', index=False)
+    t6.to_csv(target_dir / 'table06_modality_ablation.csv', index=False)
+    t7.to_csv(target_dir / 'table07_robustness.csv', index=False)
+    t8.to_csv(target_dir / 'table08_family_holdout.csv', index=False)
+    t9.to_csv(target_dir / 'table09_temporal_evaluation.csv', index=False)
+    t10.to_csv(target_dir / 'table10_latency_breakdown.csv', index=False)
+    t11.to_csv(target_dir / 'table11_model_complexity.csv', index=False)
 
 # -------------------------------------------------------------
-# Stage 7: Synchronize Verified Figures and Manuscript Artifacts
+# Stage 7: Synchronize Verified Figures
 # -------------------------------------------------------------
-print("[Stage 7/8] Synchronizing Verified Figures and Manuscript Deliverables...")
-fig_src = WS_ROOT / 'revised_manuscript' / 'figures'
+print("[Stage 7/8] Synchronizing Verified Figures...")
+fig_src = REPO_ROOT / 'analysis' / 'figures' / 'output'
 if fig_src.exists():
     for f in fig_src.glob('*.*'):
-        for base in [REPO_ROOT, WS_ROOT]:
-            shutil.copy(f, base / 'figures' / 'verified' / f.name)
-
-for ext in ['pdf', 'docx']:
-    src_file = WS_ROOT / f'FINAL_REVISED_MANUSCRIPT.{ext}'
-    if src_file.exists():
-        for base in [REPO_ROOT, WS_ROOT]:
-            shutil.copy(src_file, base / 'manuscript' / 'revised' / f'FINAL_REVISED_MANUSCRIPT.{ext}')
+        for dest in [REPO_ROOT / 'figures' / 'verified', REPO_ROOT / 'results' / 'figures']:
+            dest.mkdir(parents=True, exist_ok=True)
+            shutil.copy(f, dest / f.name)
 
 # -------------------------------------------------------------
 # Stage 8: Generate Master Claim-Evidence Matrix CSV
@@ -396,10 +392,11 @@ claim_rows = [
     {"Claim ID": "CLM-11", "Section": "§17 Latency", "Claim": "Fast static triage (Stage 1): 17.53 ms; Sandbox load reduction: 86.2%", "Evidence": "latency_benchmark.json, triage CDF", "Verified Result": "17.53 ms; 86.2% triage yield", "Difference": "0", "Status": "VERIFIED", "Action": "RETAINED"}
 ]
 df_claims = pd.DataFrame(claim_rows)
-for base in [REPO_ROOT, WS_ROOT]:
-    df_claims.to_csv(base / 'reports' / 'claim_evidence_matrix.csv', index=False)
+for dest in [REPO_ROOT / 'reports', REPO_ROOT / 'results' / 'metrics']:
+    dest.mkdir(parents=True, exist_ok=True)
+    df_claims.to_csv(dest / 'claim_evidence_matrix.csv', index=False)
 
 print("=" * 80)
 print("MASTER REPRODUCIBILITY PIPELINE COMPLETED SUCCESSFULLY!")
-print("All reports, verified results, tables, and manuscript copies are generated.")
+print("All reports, verified results, and tables are generated.")
 print("=" * 80)
