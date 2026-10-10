@@ -31,7 +31,7 @@
     "discordant_b": 4,
     "discordant_c": 73,
     "chi2_statistic": 60.05194805194805,
-    "p_value_asymptotic": 9.2148511043888e-15,
+    "p_value_asymptotic": 9.238651818512024e-15,
     "p_value_exact": 1.891833529313699e-17,
     "alpha": 0.05,
     "statistically_significant": true
